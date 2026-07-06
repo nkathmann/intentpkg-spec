@@ -1,0 +1,58 @@
+# Requires FRESH substrate. Fixtures seed users, specialties, and a set of
+# tickets in known states (see fixtures.example.yaml + substrate).
+- name: user creates a software ticket and it routes to a software analyst
+  request:
+    method: POST
+    path: /api/tickets
+    headers: { x-test-principal: "user1" }
+    body: { subject: "cannot install IDE", category: "software" }
+  expect:
+    status: 201
+    body_schema:
+      type: object
+      required: [id, status, assignee_id, unrouted]
+      properties: { status: { type: string }, unrouted: { type: boolean } }
+    db_checks:
+      - name: assigned to a software specialist
+        query: "select count(*) from analyst_specialties s join tickets t on t.assignee_id = s.analyst_id where t.subject = 'cannot install IDE' and s.category = 'software'"
+        equals: "1"
+  mutates_fixtures: true
+  provenance: { kind: declared }
+- name: analyst first reply moves OPEN to IN_PROGRESS
+  request:
+    method: POST
+    path: "/api/tickets/$fixture.user1_open_ticket.id/messages"
+    headers: { x-test-principal: "$fixture.user1_open_ticket.assignee_username" }
+    body: { body: "Looking into this now." }
+  expect:
+    status: 201
+    db_checks:
+      - name: status advanced
+        query: "select status from tickets where id = $fixture.user1_open_ticket.id"
+        equals: "IN_PROGRESS"
+  mutates_fixtures: true
+  provenance: { kind: declared }
+- name: creator and assignee converse in order
+  request:
+    method: GET
+    path: "/api/tickets/$fixture.conversation_ticket.id/messages"
+    headers: { x-test-principal: "user2" }
+  expect:
+    status: 200
+    body_schema: { type: array, minItems: 2 }
+  provenance: { kind: declared }
+- name: empty message body rejected
+  request:
+    method: POST
+    path: "/api/tickets/$fixture.user1_open_ticket.id/messages"
+    headers: { x-test-principal: "user1" }
+    body: { body: "" }
+  expect: { status: 400 }
+  provenance: { kind: declared }
+- name: unrelated user cannot see the ticket
+  request:
+    method: GET
+    path: "/api/tickets/$fixture.user2_ticket.id"
+    headers: { x-test-principal: "user1" }
+  expect: { status: 404 }
+  provenance: { kind: declared }

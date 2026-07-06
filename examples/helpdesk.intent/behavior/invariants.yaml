@@ -1,0 +1,142 @@
+invariants:
+- id: INV-001
+  statement: "All /api endpoints except POST /api/session require a session; unauthenticated requests receive 401"
+  provenance: { kind: declared }
+  check:
+    request: { method: GET, path: /api/tickets }
+    expect:  { status: 401 }
+- id: INV-002
+  statement: "Passwords are stored as Argon2id at policy parameters (m=19456,t=2,p=1); no plaintext or weaker hash is ever persisted"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: /api/users
+      headers: { x-test-principal: "admin" }
+      body: { username: "gate-created-user", password: "gate-pw-123456", role: "user" }
+    expect:
+      status: 201
+      db_checks:
+        - name: hash is argon2id at required params
+          query: "select case when password_hash like '$argon2id$v=19$m=19456,t=2,p=1$%' then 'ARGON2ID-POLICY-OK' else 'POLICY-VIOLATION' end from app_users where username = 'gate-created-user'"
+          equals: "ARGON2ID-POLICY-OK"
+        - name: no plaintext present anywhere in the hash column
+          query: "select count(*) from app_users where password_hash like '%gate-pw-123456%'"
+          equals: "0"
+- id: INV-003
+  statement: "Only users may create tickets; administrators and analysts receive 403"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: /api/tickets
+      headers: { x-test-principal: "hwa1" }   # an analyst
+      body: { subject: "should fail", category: "hardware" }
+    expect: { status: 403 }
+- id: INV-004
+  statement: "Ticket creation auto-assigns to an active analyst whose specialties include the category; the assignee is non-null and specialty-matched"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: /api/tickets
+      headers: { x-test-principal: "user1" }
+      body: { subject: "printer down", category: "hardware" }
+    expect:
+      status: 201
+      body_schema:
+        type: object
+        required: [id, status, assignee_id, unrouted]
+        properties:
+          assignee_id: { type: string }     # non-null
+          unrouted:    { type: boolean }
+      db_checks:
+        - name: assignee actually has the hardware specialty
+          query: "select count(*) from analyst_specialties s join tickets t on t.assignee_id = s.analyst_id where t.subject = 'printer down' and s.category = 'hardware'"
+          equals: "1"
+        - name: routed ticket is not flagged unrouted
+          query: "select case when unrouted then 'UNROUTED' else 'ROUTED' end from tickets where subject = 'printer down'"
+          equals: "ROUTED"
+- id: INV-005
+  statement: "A user can read ONLY tickets they created; another user's ticket returns 404 (not 403)"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: GET
+      path: "/api/tickets/$fixture.user2_ticket.id"
+      headers: { x-test-principal: "user1" }
+    expect: { status: 404 }
+- id: INV-006
+  statement: "An analyst can read ONLY tickets assigned to them; a ticket assigned elsewhere returns 404"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: GET
+      path: "/api/tickets/$fixture.swa1_ticket.id"
+      headers: { x-test-principal: "hwa1" }
+    expect: { status: 404 }
+- id: INV-007
+  statement: "Only the creator or the assignee may close a ticket; closing sets status CLOSED and records closed_by/closed_at"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: "/api/tickets/$fixture.user1_open_ticket.id/close"
+      headers: { x-test-principal: "user1" }
+    expect:
+      status: 200
+      db_checks:
+        # representation-stable: emit explicit string literals, never a raw
+        # boolean, so the assertion does not depend on how a given driver
+        # renders true/false (t vs true vs 1). See SPEC db_check portability rule.
+        - name: status is CLOSED with closer recorded
+          query: "select case when status = 'CLOSED' and closed_by_id is not null then 'CLOSED-WITH-CLOSER' else 'INCOMPLETE' end from tickets where id = $fixture.user1_open_ticket.id"
+          equals: "CLOSED-WITH-CLOSER"
+- id: INV-008
+  statement: "Messaging a CLOSED or ARCHIVED ticket is rejected with 409 and records nothing"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: "/api/tickets/$fixture.closed_ticket.id/messages"
+      headers: { x-test-principal: "user2" }
+      body: { body: "too late" }
+    expect:
+      status: 409
+      db_checks:
+        - name: no message recorded
+          query: "select count(*) from ticket_messages where body = 'too late'"
+          equals: "0"
+- id: INV-009
+  statement: "An administrator can read any ticket but cannot post messages (separation of duties): POST message as admin is 403"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: "/api/tickets/$fixture.user1_open_ticket.id/messages"
+      headers: { x-test-principal: "admin" }
+      body: { body: "admin meddling" }
+    expect: { status: 403 }
+- id: INV-010
+  statement: "Attachment download is restricted to ticket participants and administrators; an unrelated user gets 404"
+  provenance: { kind: declared }
+  note: "attachment fixture requires multipart upload in setup; probe added when runner multipart support lands (gap #6)"
+- id: INV-011
+  statement: "The archive job moves tickets CLOSED >= 24h to ARCHIVED and is idempotent; ARCHIVED is terminal and read-only"
+  provenance: { kind: declared }
+  check:
+    request: { method: POST, path: /__test/jobs/archive-closed/run }
+    expect:
+      status: 200
+      db_checks:
+        - name: aged closed ticket is now archived
+          query: "select status from tickets where id = $fixture.aged_closed_ticket.id"
+          equals: "ARCHIVED"
+        - name: no closed-over-24h tickets remain
+          query: "select count(*) from tickets where status = 'CLOSED' and closed_at <= now() - interval '24 hours'"
+          equals: "0"
+known_nonguarantees:
+  - "No ticket reopening in v1 — a closed ticket's user opens a new one"
+  - "No reassignment — an analyst cannot hand a ticket to another analyst in v1"
+  - "Auto-assignment is least-loaded-at-creation; it does NOT rebalance as load changes"
+  - "unrouted tickets are still assigned (to least-loaded overall), just flagged"

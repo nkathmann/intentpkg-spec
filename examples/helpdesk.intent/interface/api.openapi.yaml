@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info: { title: Helpdesk contracted surface, version: v1 }
+paths:
+  /api/session:
+    post:
+      x-auth: none
+      description: Login with username + password; verifies Argon2id hash
+      requestBody:
+        content: { application/json: { schema: { type: object, required: [username, password],
+          properties: { username: {type: string}, password: {type: string} } } } }
+      responses:
+        "200": { description: session established }
+        "401": { description: bad credentials or inactive account }
+  /api/users:
+    post:
+      x-auth: session
+      x-roles: [administrator]
+      description: Create a user account; password is Argon2id-hashed at policy params
+      requestBody:
+        content: { application/json: { schema: { type: object, required: [username, password, role],
+          properties: { username: {type: string}, password: {type: string},
+                        role: {enum: [administrator, it_analyst, user]} } } } }
+      responses:
+        "201": { description: created }
+        "400": { description: validation failure }
+        "401": { description: no session }
+        "403": { description: not an administrator }
+        "409": { description: username taken }
+    get:
+      x-auth: session
+      x-roles: [administrator]
+      responses: { "200": {description: user list}, "401": {description: no session}, "403": {description: not admin} }
+  /api/analysts/{id}/specialties:
+    put:
+      x-auth: session
+      x-roles: [administrator]
+      description: Replace an analyst's specialty set
+      responses: { "200": {description: updated}, "401": {description: no session}, "403": {description: not admin}, "404": {description: no such analyst} }
+  /api/tickets:
+    post:
+      x-auth: session
+      x-roles: [user]
+      description: >
+        Create a ticket; auto-assigns to the least-loaded active analyst whose
+        specialties include the category. If none match, assigns least-loaded
+        analyst overall and sets unrouted=true.
+      requestBody:
+        content: { application/json: { schema: { type: object, required: [subject, category],
+          properties: { subject: {type: string}, body: {type: string},
+                        category: {enum: [hardware, software, network, access, other]} } } } }
+      responses:
+        "201":
+          content: { application/json: { schema: { type: object, required: [id, status, assignee_id],
+            properties: { id: {type: integer}, status: {type: string},
+                          assignee_id: {type: [string, "null"]}, unrouted: {type: boolean} } } } }
+        "400": { description: validation failure }
+        "401": { description: no session }
+        "403": { description: only users create tickets }
+    get:
+      x-auth: session
+      description: >
+        List tickets visible to the caller: users see own; analysts see
+        assigned; administrators see all.
+      responses: { "200": {description: scoped ticket list}, "401": {description: no session} }
+  /api/tickets/{id}:
+    get:
+      x-auth: session
+      description: A ticket, if the caller is its creator, its assignee, or an administrator; else 404
+      responses: { "200": {description: ticket}, "401": {description: no session}, "404": {description: not found or not visible} }
+  /api/tickets/{id}/messages:
+    get:
+      x-auth: session
+      responses: { "200": {description: messages in order}, "401": {description: no session}, "404": {description: not visible} }
+    post:
+      x-auth: session
+      x-roles: [user, it_analyst]
+      description: >
+        Post a message. Allowed only for the ticket's creator or its assignee
+        (administrators do NOT post — separation of duties). An analyst's first
+        message transitions OPEN -> IN_PROGRESS. Blocked on CLOSED/ARCHIVED (409).
+      requestBody:
+        content: { application/json: { schema: { type: object, required: [body],
+          properties: { body: {type: string} } } } }
+      responses:
+        "201": { description: posted }
+        "400": { description: empty body }
+        "401": { description: no session }
+        "404": { description: ticket not visible }
+        "409": { description: ticket is closed or archived }
+  /api/messages/{id}/attachments:
+    post:
+      x-auth: session
+      x-roles: [user, it_analyst]
+      description: Upload an attachment to a message the caller authored; multipart
+      requestBody:
+        content:
+          multipart/form-data:
+            schema: { type: object, required: [file], properties: { file: {type: string, format: binary} } }
+      responses:
+        "201":
+          content: { application/json: { schema: { type: object, required: [id, sha256, byte_size],
+            properties: { id: {type: string}, sha256: {type: string}, byte_size: {type: integer} } } } }
+        "401": { description: no session }
+        "404": { description: message not visible }
+        "413": { description: file too large }
+  /api/attachments/{id}:
+    get:
+      x-auth: session
+      description: Download; permitted to ticket participants and administrators only
+      responses: { "200": {description: file bytes}, "401": {description: no session}, "404": {description: not visible} }
+  /api/tickets/{id}/close:
+    post:
+      x-auth: session
+      x-roles: [user, it_analyst]
+      description: >
+        Close the ticket; permitted to its creator or its assignee. Records
+        closed_by and closed_at, sets status CLOSED. Idempotent-ish: closing a
+        CLOSED ticket is 409; an ARCHIVED ticket is 409.
+      responses:
+        "200":
+          content: { application/json: { schema: { type: object, required: [id, status],
+            properties: { id: {type: integer}, status: {type: string} } } } }
+        "401": { description: no session }
+        "404": { description: not visible }
+        "409": { description: already closed or archived }
+  /api/reports/archived:
+    get:
+      x-auth: session
+      x-roles: [administrator]
+      description: The archived-ticket reporting set
+      responses: { "200": {description: archived tickets}, "401": {description: no session}, "403": {description: not admin} }

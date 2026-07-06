@@ -1,0 +1,15 @@
+format: intentpkg/v0.2
+app:
+  id: sumhub
+  title: "Sumhub — multi-source value aggregator"
+  owner: { user: "example", org_unit: "finance-ops" }
+envelope: internal-web-app/v1
+versions: { spec: 1, data: 1 }
+rebuild: { cadence: 14d, mode: plan-then-apply }
+# NOTE: no `testing:` block — auth is a native machine token (Bearer), so the
+# gate can authenticate the same way real callers do. The testing contract
+# exists to substitute vendor auth (OAuth/SSO); it is not needed here.
+extraction:
+  method: manual
+  extracted_at: 2026-07-04
+  extractor: human

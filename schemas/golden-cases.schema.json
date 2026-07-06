@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/golden-cases.schema.json",
+  "title": "behavior/golden/*.cases.yaml",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["name", "request", "expect"],
+    "properties": {
+      "name": { "type": "string" },
+      "setup": { "type": "object" },
+      "request": { "$ref": "_defs.schema.json#/$defs/request" },
+      "expect": { "$ref": "_defs.schema.json#/$defs/expect" },
+      "mutates_fixtures": { "type": "boolean" },
+      "provenance": { "$ref": "_defs.schema.json#/$defs/provenance" }
+    },
+    "additionalProperties": false
+  }
+}

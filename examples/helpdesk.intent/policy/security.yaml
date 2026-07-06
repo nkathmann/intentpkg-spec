@@ -1,0 +1,41 @@
+# Security policy (org-injected plane). In deployment the org security team
+# owns this file; authored here to specify the greenfield app's requirements.
+# Where a requirement is machine-verifiable, the enforcing gate is named.
+
+password_hashing:
+  algorithm: argon2id
+  # OWASP Password Storage Cheat Sheet minimum configuration.
+  parameters: { memory_kib: 19456, iterations: 2, parallelism: 1 }
+  rationale: "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id"
+  enforcement: >
+    Argon2id encodes its parameters in the hash string
+    ($argon2id$v=19$m=19456,t=2,p=1$...). Gated by INV-002 and admin.cases
+    via db_check LIKE '$argon2id$v=19$m=19456,t=2,p=1$%'. A build using a
+    different algorithm or weaker parameters fails the gate.
+  prohibited:
+    - "plaintext or reversible password storage (any form)"
+    - "fast/general-purpose hashes for passwords (MD5, SHA-1, SHA-256 bare, bcrypt below cost 12)"
+
+encryption_at_rest:
+  algorithm: AES-256
+  scope: "attachment object storage and database volumes"
+  enforcement: >
+    Attachment bytes are stored encrypted; the attachment row holds only an
+    opaque storage_key and a sha256 of the plaintext for integrity. Cipher
+    choice is a deployment/storage-layer property; the package REQUIRES it and
+    the build MUST NOT store attachment plaintext in the database or in an
+    unencrypted local path. (Verification is deployment-attested at L3;
+    the sha256 roundtrip gate detects corruption, not encryption.)
+
+banned_dependencies:
+  - name: crypto-js
+    reason: "unmaintained, footgun-prone primitives; use platform/native crypto (WebCrypto, Node crypto, or a vetted Argon2 binding)"
+    enforcement: "build/constraints.yaml deny_dependencies; L0-adjacent dependency scan"
+
+transport:
+  requirement: "TLS for all traffic in deployment"
+  note: "not gated in local verify; L3 deployment attestation"
+
+session:
+  requirement: "server-side session or signed token; session cookies HttpOnly+Secure+SameSite in deployment"
+  test_contract_note: "TEST_AUTH substitutes this in verification only; MUST be inert in production"

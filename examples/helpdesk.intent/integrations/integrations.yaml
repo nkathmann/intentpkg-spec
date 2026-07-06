@@ -1,0 +1,10 @@
+integrations:
+  - id: postgres
+    kind: relational datastore
+    secret_refs: [DATABASE_URL]
+    replaceable: false
+  - id: object-store
+    kind: encrypted blob storage (attachments)
+    secret_refs: [OBJECT_STORE_URL, OBJECT_STORE_KEY]
+    replaceable: true
+    note: "AES-256 at rest required (policy/security.yaml); local dev may use an encrypted filesystem path"

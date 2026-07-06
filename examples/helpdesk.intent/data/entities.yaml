@@ -1,0 +1,52 @@
+# Authored data contract. provenance: declared throughout (greenfield).
+entities:
+  app_user:
+    provenance: { kind: declared }
+    fields:
+      id:            { type: uuid, pk: true }
+      username:      { type: text, unique: true, not_null: true }
+      password_hash: { type: text, not_null: true,
+                       note: "Argon2id per policy/security.yaml; parameters embedded in the hash string and gated (m=19456,t=2,p=1)" }
+      role:          { type: "enum(administrator,it_analyst,user)", not_null: true }
+      active:        { type: boolean, default: true }
+      created_at:    { type: timestamp, default: now }
+  analyst_specialty:
+    provenance: { kind: declared }
+    note: "join: which categories an analyst handles. An analyst with no rows handles nothing (never auto-assigned)."
+    fields:
+      id:          { type: bigserial, pk: true }
+      analyst_id:  { type: ref(app_user), on_delete: CASCADE }
+      category:    { type: "enum(hardware,software,network,access,other)", not_null: true }
+  ticket:
+    provenance: { kind: declared }
+    fields:
+      id:            { type: bigserial, pk: true }
+      creator_id:    { type: ref(app_user), not_null: true }
+      assignee_id:   { type: ref(app_user), nullable: true, note: "the assigned it_analyst; null only transiently" }
+      subject:       { type: text, not_null: true }
+      category:      { type: "enum(hardware,software,network,access,other)", not_null: true }
+      status:        { type: "enum(OPEN,IN_PROGRESS,CLOSED,ARCHIVED)", default: OPEN, not_null: true }
+      unrouted:      { type: boolean, default: false, note: "true if assigned without a specialty match" }
+      created_at:    { type: timestamp, default: now }
+      closed_at:     { type: timestamp, nullable: true }
+      closed_by_id:  { type: ref(app_user), nullable: true }
+      archived_at:   { type: timestamp, nullable: true }
+  ticket_message:
+    provenance: { kind: declared }
+    fields:
+      id:          { type: bigserial, pk: true }
+      ticket_id:   { type: ref(ticket), on_delete: CASCADE }
+      author_id:   { type: ref(app_user), not_null: true }
+      body:        { type: text, not_null: true }
+      created_at:  { type: timestamp, default: now }
+  attachment:
+    provenance: { kind: declared }
+    fields:
+      id:           { type: uuid, pk: true }
+      message_id:   { type: ref(ticket_message), on_delete: CASCADE }
+      filename:     { type: text, not_null: true }
+      content_type: { type: text, not_null: true }
+      byte_size:    { type: integer, not_null: true }
+      sha256:       { type: text, not_null: true, note: "content hash; gated on upload/download roundtrip" }
+      storage_key:  { type: text, not_null: true, note: "opaque key into AES-256 encrypted object store (policy)" }
+      created_at:   { type: timestamp, default: now }

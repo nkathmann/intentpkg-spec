@@ -1,0 +1,3 @@
+languages: { allowed: [typescript, python] }   # builder's choice within the set
+frameworks: {}
+deny_dependencies: []

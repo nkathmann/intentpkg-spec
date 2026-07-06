@@ -1,0 +1,5 @@
+fixture:
+  intake_token: "test-intake-token-abc"   # the substrate's seeded INTAKE_TOKEN value
+db:
+  mode: command
+  command: "docker exec roundtrip-pg psql -U postgres -d sumhub -tAc {query}"

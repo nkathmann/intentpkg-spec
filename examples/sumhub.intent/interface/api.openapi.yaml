@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info: { title: Sumhub surface, version: as-built-1 }
+paths:
+  /api/values:
+    post:
+      x-auth: token          # machine-readable exposure (SPEC §6.1) — Bearer required
+      description: Record one value from a producer system
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [source, value]
+              properties:
+                source: { type: string }
+                value:  { type: integer }
+      responses:
+        "201": { description: recorded }
+        "400": { description: missing/invalid source or value }
+        "401": { description: missing or invalid token }
+  /api/sum:
+    get:
+      x-auth: token
+      description: Current total across all recorded values
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [sum, count]
+                properties:
+                  sum:   { type: integer }
+                  count: { type: integer }
+        "401": { description: missing or invalid token }

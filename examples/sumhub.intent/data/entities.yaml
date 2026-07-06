@@ -1,0 +1,8 @@
+entities:
+  measurement:
+    provenance: { kind: declared }
+    fields:
+      id:          { type: bigserial, pk: true }
+      source:      { type: text, not_null: true }     # producer system id
+      value:       { type: integer, not_null: true }  # integers by contract; no float semantics
+      recorded_at: { type: timestamp, default: now }

@@ -1,0 +1,34 @@
+# Requires FRESH substrate: seeds are exactly two rows (3 from sysA, 4 from sysB).
+- name: post a value and the sum moves by exactly that amount
+  request:
+    method: POST
+    path: /api/values
+    headers: { Authorization: "Bearer $fixture.intake_token" }
+    body: { source: "sysC", value: 5 }
+  expect:
+    status: 201
+    db_checks:
+      - name: one row added
+        query: "select count(*) from measurements"
+        delta: 1
+      - name: stored sum is now 12
+        query: "select sum(value) from measurements"
+        equals: "12"
+  mutates_fixtures: true
+  provenance: { kind: declared }
+- name: sum reflects the post immediately
+  request:
+    method: GET
+    path: /api/sum
+    headers: { Authorization: "Bearer $fixture.intake_token" }
+  expect:
+    status: 200
+    body_contains: { sum: 12, count: 3 }
+  provenance: { kind: declared }
+- name: wrong token rejected
+  request:
+    method: GET
+    path: /api/sum
+    headers: { Authorization: "Bearer not-the-token" }
+  expect: { status: 401 }
+  provenance: { kind: declared }

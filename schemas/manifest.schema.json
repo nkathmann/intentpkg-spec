@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/manifest.schema.json",
+  "title": "manifest.yaml",
+  "type": "object",
+  "required": ["format", "app", "envelope", "versions"],
+  "properties": {
+    "format": { "type": "string", "pattern": "^intentpkg/v0\\.[12]$" },
+    "app": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "title": { "type": "string" },
+        "owner": { "type": "object" },
+        "source_repo": { "type": "string" },
+        "source_commit": { "type": "string" },
+        "origin_note": { "type": "string" }
+      }
+    },
+    "envelope": { "type": "string" },
+    "versions": {
+      "type": "object",
+      "required": ["spec", "data"],
+      "properties": { "spec": { "type": "integer", "minimum": 1 },
+                      "data": { "type": "integer", "minimum": 1 } }
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "contracted": { "type": "array", "items": { "type": "string" } },
+        "unscoped": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "datastores": { "type": "object", "additionalProperties": { "type": "object" } },
+    "rebuild": {
+      "type": "object",
+      "properties": { "cadence": { "type": "string" },
+                      "mode": { "enum": ["plan-then-apply"] } }
+    },
+    "testing": {
+      "type": "object",
+      "required": ["auth_mode"],
+      "properties": { "auth_mode": { "enum": ["header-principal"] },
+                      "convention": { "type": "string" } }
+    },
+    "extraction": {
+      "type": "object",
+      "properties": { "method": { "type": "string" },
+                      "extracted_at": {},
+                      "extractor": { "type": "string" } }
+    }
+  },
+  "additionalProperties": false
+}

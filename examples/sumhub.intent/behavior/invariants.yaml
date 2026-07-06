@@ -1,0 +1,41 @@
+invariants:
+- id: INV-001
+  statement: "Both endpoints require a valid Bearer token; requests without one receive 401"
+  provenance: { kind: declared }
+  check:
+    request: { method: GET, path: /api/sum }
+    expect:  { status: 401 }
+- id: INV-002
+  statement: "GET /api/sum is DERIVED from storage: its sum always equals SQL SUM(value) and its count equals COUNT(*) — no drifting cached counter"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: GET
+      path: /api/sum
+      headers: { Authorization: "Bearer $fixture.intake_token" }
+    expect:
+      status: 200
+      body_contains: { sum: 7, count: 2 }     # fresh substrate seeds 3 + 4
+      db_checks:
+        - name: api sum equals storage sum
+          query: "select coalesce(sum(value),0) from measurements"
+          equals: "7"
+- id: INV-003
+  statement: "POST /api/values with missing source or non-integer value is 400 and records nothing"
+  provenance: { kind: declared }
+  check:
+    request:
+      method: POST
+      path: /api/values
+      headers: { Authorization: "Bearer $fixture.intake_token" }
+      body: { source: "sysA" }               # value missing
+    expect:
+      status: 400
+      db_checks:
+        - name: nothing recorded
+          query: "select count(*) from measurements"
+          equals: "2"
+known_nonguarantees:
+  - "No idempotency: the same value posted twice counts twice (producers own dedup)"
+  - "No per-source authorization: any holder of the intake token may post as any source"
+  - "No reset/windowing: the sum is all-time until a data-contract change says otherwise"

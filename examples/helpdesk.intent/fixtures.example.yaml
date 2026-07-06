@@ -1,0 +1,19 @@
+# Fixtures for L2 verification of the greenfield helpdesk package.
+# The substrate seeds users (with real Argon2id hashes), specialties, and
+# tickets in known states. $fixture.* tokens resolve here.
+fixture:
+  # seeded users and their plaintext passwords (for login gates)
+  admin: { username: "admin", password: "admin-pass-1" }
+  user1: { username: "user1", password: "user-pass-1" }
+  user2: { username: "user2", password: "user-pass-2" }
+  # analysts: hwa1/hwa2 = hardware, swa1 = software (see substrate seed)
+  # tickets seeded in known states:
+  user1_open_ticket:   { id: "1", assignee_username: "hwa1" }  # OPEN, user1 creator, hwa1 assignee
+  user2_ticket:        { id: "2" }                              # user2's ticket (isolation probe)
+  swa1_ticket:         { id: "3" }                              # assigned to swa1 (analyst isolation probe)
+  conversation_ticket: { id: "4" }                              # user2 + assignee, >=2 messages seeded
+  closed_ticket:       { id: "5" }                              # CLOSED (recently) — messaging blocked
+  aged_closed_ticket:  { id: "6" }                              # CLOSED >24h ago — archive-eligible
+db:
+  mode: command
+  command: "docker exec roundtrip-pg psql -U postgres -d helpdesk -tAc {query}"

@@ -1,0 +1,15 @@
+# Scheduled jobs (proposal 0002). Verified via TEST_HOOKS synchronous trigger.
+jobs:
+  - id: archive-closed
+    schedule: "0 2 * * *"    # daily 02:00
+    provenance: { kind: declared }
+    semantics:
+      overlap: forbid
+      missed_runs: catch-up   # a missed night must still archive eligible tickets next run
+      idempotent: true        # running twice archives nothing new
+    effect:
+      description: "tickets CLOSED for >= 24h become ARCHIVED with archived_at set"
+      db_checks:
+        - name: eligible closed tickets are archived
+          query: "select count(*) from tickets where status = 'CLOSED' and closed_at <= now() - interval '24 hours'"
+          equals: "0"

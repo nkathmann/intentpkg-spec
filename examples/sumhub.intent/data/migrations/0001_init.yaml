@@ -1,0 +1,9 @@
+id: 0001_init
+status: ground-truth
+up: |
+  create table measurements (
+    id bigserial primary key,
+    source text not null,
+    value integer not null,
+    recorded_at timestamptz not null default now()
+  );

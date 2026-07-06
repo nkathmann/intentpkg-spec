@@ -1,0 +1,3 @@
+# API-only service: no human surfaces. The empty list is a deliberate
+# declaration, not an omission.
+surfaces: []

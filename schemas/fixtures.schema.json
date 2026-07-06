@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/fixtures.schema.json",
+  "title": "fixtures(.example).yaml",
+  "$defs": {
+    "adapter": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["command", "psycopg"] },
+        "command": { "type": "string" },
+        "dsn": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "required": ["fixture"],
+  "properties": {
+    "fixture": { "type": "object" },
+    "db": {
+      "anyOf": [
+        { "$ref": "#/$defs/adapter" },
+        { "type": "object", "additionalProperties": { "$ref": "#/$defs/adapter" } }
+      ]
+    },
+    "auth": { "type": "object" }
+  },
+  "additionalProperties": false
+}

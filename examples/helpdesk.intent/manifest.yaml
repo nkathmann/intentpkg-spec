@@ -1,0 +1,30 @@
+format: intentpkg/v0.2
+app:
+  id: helpdesk
+  title: "Helpdesk — IT ticketing with role-based access and specialty routing"
+  owner: { user: "example", org_unit: "it-ops" }
+  origin_note: >
+    GREENFIELD package — authored intent, not extracted. All provenance is
+    'declared'. First package to exercise: multipart attachments, a scheduled
+    archive job (proposal 0002 TEST_HOOKS), and a populated security policy
+    layer with executable enforcement (Argon2id parameters, AES-256 at rest).
+envelope: internal-web-app/v1
+versions: { spec: 1, data: 1 }
+rebuild: { cadence: 14d, mode: plan-then-apply }
+datastores:
+  primary: { kind: postgres-compatible, schema_provenance: authored (this package is source of truth) }
+testing:
+  auth_mode: header-principal
+  convention: >
+    When TEST_AUTH=1, accept x-test-principal: <username> as an authenticated
+    session for that user, resolving to their stored role. Unknown principals
+    are REJECTED (401) — unlike extraction packages, this greenfield app does
+    not auto-materialize users; accounts are created via the admin API only.
+    MUST be inert unless TEST_AUTH=1.
+  hooks: >
+    When TEST_HOOKS=1, expose POST /__test/jobs/{id}/run to run scheduled jobs
+    synchronously (see behavior/jobs.yaml). MUST be inert unless TEST_HOOKS=1.
+extraction:
+  method: authored
+  extracted_at: 2026-07-05
+  extractor: human

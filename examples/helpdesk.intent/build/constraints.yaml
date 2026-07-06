@@ -1,0 +1,5 @@
+languages: { allowed: [typescript, python] }
+frameworks: {}
+deny_dependencies:
+  - { name: "crypto-js", reason: "banned by policy/security.yaml" }
+password_hashing_note: "MUST use a vetted Argon2id implementation (e.g. argon2 native binding); parameters per policy"

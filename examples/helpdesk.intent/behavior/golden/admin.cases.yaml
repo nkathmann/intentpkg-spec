@@ -1,0 +1,52 @@
+- name: admin creates an analyst and sets specialties
+  request:
+    method: POST
+    path: /api/users
+    headers: { x-test-principal: "admin" }
+    body: { username: "newanalyst", password: "new-analyst-pw-1", role: "it_analyst" }
+  expect:
+    status: 201
+    db_checks:
+      - name: created with analyst role
+        query: "select role from app_users where username = 'newanalyst'"
+        equals: "it_analyst"
+      - name: password stored at argon2id policy params
+        query: "select case when password_hash like '$argon2id$v=19$m=19456,t=2,p=1$%' then 'ARGON2ID-POLICY-OK' else 'POLICY-VIOLATION' end from app_users where username = 'newanalyst'"
+        equals: "ARGON2ID-POLICY-OK"
+  mutates_fixtures: true
+  provenance: { kind: declared }
+- name: duplicate username rejected
+  request:
+    method: POST
+    path: /api/users
+    headers: { x-test-principal: "admin" }
+    body: { username: "user1", password: "whatever-123", role: "user" }
+  expect: { status: 409 }
+  provenance: { kind: declared }
+- name: non-admin cannot create users
+  request:
+    method: POST
+    path: /api/users
+    headers: { x-test-principal: "user1" }
+    body: { username: "sneaky", password: "sneaky-123", role: "administrator" }
+  expect:
+    status: 403
+    db_checks:
+      - name: nothing created
+        query: "select count(*) from app_users where username = 'sneaky'"
+        equals: "0"
+  provenance: { kind: declared }
+- name: login with correct password succeeds
+  request:
+    method: POST
+    path: /api/session
+    body: { username: "user1", password: "$fixture.user1.password" }
+  expect: { status: 200 }
+  provenance: { kind: declared }
+- name: login with wrong password fails
+  request:
+    method: POST
+    path: /api/session
+    body: { username: "user1", password: "definitely-wrong" }
+  expect: { status: 401 }
+  provenance: { kind: declared }

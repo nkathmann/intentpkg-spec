@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/invariants.schema.json",
+  "title": "behavior/invariants.yaml",
+  "type": "object",
+  "required": ["invariants"],
+  "properties": {
+    "invariants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "provenance"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^INV-[0-9]{3}$" },
+          "statement": { "type": "string" },
+          "provenance": { "$ref": "_defs.schema.json#/$defs/provenance" },
+          "note": { "type": "string" },
+          "check": { "$ref": "_defs.schema.json#/$defs/check" },
+          "mutates_fixtures": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "known_nonguarantees": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

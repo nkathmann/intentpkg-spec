@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/surfaces.schema.json",
+  "title": "interface/surfaces.yaml",
+  "type": "object",
+  "required": ["surfaces"],
+  "properties": {
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "route", "purpose"],
+        "properties": {
+          "id": { "type": "string" },
+          "route": { "type": "string" },
+          "purpose": { "type": "string" },
+          "auth": { "type": "string" },
+          "pinned": { "type": "array" },
+          "provenance": { "$ref": "_defs.schema.json#/$defs/provenance" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "navigation": { "type": "object" }
+  },
+  "additionalProperties": false
+}

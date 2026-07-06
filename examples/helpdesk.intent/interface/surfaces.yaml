@@ -1,0 +1,27 @@
+surfaces:
+  - id: login
+    route: /login
+    purpose: username/password login
+    auth: none
+    pinned: [username field, password field, submit, error on bad credentials]
+    provenance: { kind: declared }
+  - id: ticket-list
+    route: /tickets
+    purpose: role-scoped ticket list (own / assigned / all)
+    auth: session-required
+    pinned: [ticket rows with subject+status+category, create-ticket action (users), status filter]
+    provenance: { kind: declared }
+  - id: ticket-detail
+    route: /tickets/{id}
+    purpose: conversation view with message thread, attachments, close action
+    auth: session-required
+    pinned: [message thread in order, compose box, attach-file control, download attachment, close-ticket button]
+    provenance: { kind: declared }
+  - id: admin-users
+    route: /admin/users
+    purpose: account and specialty management
+    auth: session-required (administrator)
+    pinned: [user table, create user form (username, password, role), analyst specialty editor]
+    provenance: { kind: declared }
+navigation:
+  provenance: { kind: declared }

@@ -1,0 +1,54 @@
+id: 0001_init
+status: authored
+up: |
+  create extension if not exists pgcrypto;
+  create type user_role as enum ('administrator','it_analyst','user');
+  create type category  as enum ('hardware','software','network','access','other');
+  create type ticket_status as enum ('OPEN','IN_PROGRESS','CLOSED','ARCHIVED');
+  create table app_users (
+    id uuid primary key default gen_random_uuid(),
+    username text unique not null,
+    password_hash text not null,
+    role user_role not null,
+    active boolean not null default true,
+    created_at timestamptz not null default now()
+  );
+  create table analyst_specialties (
+    id bigserial primary key,
+    analyst_id uuid not null references app_users(id) on delete cascade,
+    category category not null,
+    unique (analyst_id, category)
+  );
+  create table tickets (
+    id bigserial primary key,
+    creator_id uuid not null references app_users(id),
+    assignee_id uuid references app_users(id),
+    subject text not null,
+    category category not null,
+    status ticket_status not null default 'OPEN',
+    unrouted boolean not null default false,
+    created_at timestamptz not null default now(),
+    closed_at timestamptz,
+    closed_by_id uuid references app_users(id),
+    archived_at timestamptz
+  );
+  create table ticket_messages (
+    id bigserial primary key,
+    ticket_id bigint not null references tickets(id) on delete cascade,
+    author_id uuid not null references app_users(id),
+    body text not null,
+    created_at timestamptz not null default now()
+  );
+  create table attachments (
+    id uuid primary key default gen_random_uuid(),
+    message_id bigint not null references ticket_messages(id) on delete cascade,
+    filename text not null,
+    content_type text not null,
+    byte_size integer not null,
+    sha256 text not null,
+    storage_key text not null,
+    created_at timestamptz not null default now()
+  );
+  create index on tickets (assignee_id, status);
+  create index on tickets (creator_id, status);
+  create index on ticket_messages (ticket_id, created_at);

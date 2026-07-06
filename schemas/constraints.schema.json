@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/constraints.schema.json",
+  "title": "build/constraints.yaml",
+  "type": "object",
+  "properties": {
+    "languages": { "type": "object" },
+    "frameworks": { "type": "object" },
+    "deny_dependencies": { "type": "array" }
+  },
+  "patternProperties": {
+    "_note$": { "type": "string" }
+  },
+  "additionalProperties": false
+}

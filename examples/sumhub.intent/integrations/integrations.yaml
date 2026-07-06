@@ -1,0 +1,9 @@
+integrations:
+  - id: postgres
+    kind: relational datastore
+    secret_refs: [DATABASE_URL]
+    replaceable: false
+  - id: intake-token
+    kind: shared bearer token (machine auth)
+    secret_refs: [INTAKE_TOKEN]
+    replaceable: false

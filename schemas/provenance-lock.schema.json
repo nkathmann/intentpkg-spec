@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/provenance-lock.schema.json",
+  "title": "provenance.lock",
+  "type": "object",
+  "required": ["format", "summary"],
+  "properties": {
+    "format": { "type": "string", "pattern": "^intentpkg-provenance/v0\\.[12]$" },
+    "summary": {
+      "type": "object",
+      "required": ["declared", "inferred", "observed"],
+      "properties": {
+        "declared": { "type": "integer", "minimum": 0 },
+        "inferred": { "type": "integer", "minimum": 0 },
+        "observed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "evidence_sources_note": { "type": "string" },
+    "authored_note": { "type": "string" },
+    "confirmation_queue": { "type": "array", "items": { "type": "string" } },
+    "history": { "type": "array" }
+  },
+  "additionalProperties": false
+}
