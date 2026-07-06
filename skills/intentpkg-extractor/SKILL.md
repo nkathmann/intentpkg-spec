@@ -27,10 +27,25 @@ declared. Two disciplines govern everything:
    done until the gates close against the source. When a gate fails against
    the original, repair the PACKAGE, never the app.
 
-**Schema authority:** `schemas/` in this skill directory (mirrored from
-spec/schemas/) is the authoritative field reference for every package file
-type. Consult it whenever writing or reading package YAML; do not rely on
-recall. `validate` enforces these schemas at L0 with unknown keys rejected.
+**Spec authority (fetch first):** the authoritative spec lives at
+https://github.com/nkathmann/intentpkg-spec. At the start of every run:
+
+1. `git clone --depth 1 https://github.com/nkathmann/intentpkg-spec` (or
+   `git -C intentpkg-spec pull` if already present). Record the commit:
+   `git -C intentpkg-spec rev-parse HEAD`.
+2. Authority order: the cloned repo's `schemas/` (normative for L0, unknown
+   keys rejected), `SPEC.md`, and `SPEC-UI.md` govern. The `schemas/` copy
+   bundled in this skill directory is an offline-fallback SNAPSHOT only — use
+   it when the network is unavailable, and say so in your report.
+3. Runners: prefer `intentpkg-spec/tools/` from the clone
+   (`validate_corpus.py`, `intentpkg_ui_runner.py`). If the behavioral runner
+   is not in the clone, locate it locally as below.
+4. Consult `schemas/` whenever writing or reading package YAML; do not rely
+   on recall. Record the spec commit SHA you worked against in every
+   deliverable (build report / provenance.lock history entry) — a package is
+   only interpretable relative to a spec version.
+
+The provenance.lock history entry MUST include `spec_commit:` (the SHA from step 1).
 
 ## Phase 0 — Survey
 
