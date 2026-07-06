@@ -86,10 +86,19 @@ screens:
       - anchor: ticket-list.main.status-filter
         region: main
         role: tablist                        # segmented control
+      - anchor: ticket-list.main.status-filter.tab
+        region: main
+        role: tab
+        collection: true                     # one per status; MUST filter the list when activated (gated by flow filter-tickets)
       - anchor: ticket-list.main.row
         region: main
         role: row
         collection: true                     # repeats per ticket
+        state: default
+      - anchor: ticket-list.main.row.subject-link
+        region: main
+        role: link
+        collection: true                     # navigates to the ticket (gated by flow open-ticket-from-list)
         state: default
       - anchor: ticket-list.main.row.status-badge
         region: main

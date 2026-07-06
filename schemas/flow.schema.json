@@ -54,10 +54,54 @@
             "type": "string"
           },
           "click": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "anchor"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "anchor": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "nth": {
+                    "type": "integer"
+                  }
+                }
+              }
+            ]
           },
           "hover": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "anchor"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "anchor": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "nth": {
+                    "type": "integer"
+                  }
+                }
+              }
+            ]
           },
           "press": {
             "type": "string"
@@ -137,6 +181,9 @@
                 "type": "boolean"
               },
               "value": {
+                "type": "string"
+              },
+              "not_contains_text": {
                 "type": "string"
               }
             },

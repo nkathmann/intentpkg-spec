@@ -1,0 +1,12 @@
+id: open-ticket-from-list
+description: "The list is a door, not a poster: clicking a ticket row's subject opens the ticket (v0.3.2 — coverage-gap promotion)"
+viewport: desktop
+fixture: seeded
+auth: { principal: user1 }
+steps:
+  - goto: /tickets
+  - expect: { anchor: ticket-list.main.row.subject-link, count_min: 1 }
+  - click: { anchor: ticket-list.main.row.subject-link, nth: 0 }
+  - expect: { anchor: ticket-detail.ticket-header.subject, visible: true }
+  - expect: { anchor: ticket-detail.thread.message, count_min: 1 }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

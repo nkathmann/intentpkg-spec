@@ -196,7 +196,9 @@ def validate(pkg, res, schema_dir=None):
     for name, flow in pkg.flows.items():
         for step in flow['steps']:
             verb, val = next(iter(step.items()))
-            refs = [val] if verb in ('click','hover') else ([val['anchor']] if isinstance(val, dict) and 'anchor' in val else [])
+            refs = ([val] if isinstance(val, str) else [val.get('anchor')]) if verb in ('click','hover') \
+                   else ([val['anchor']] if isinstance(val, dict) and 'anchor' in val else [])
+            refs = [r for r in refs if r]
             for a in refs:
                 if a not in anchors: errs.append(f"{name}: unknown anchor {a}")
             if verb == 'http':
@@ -593,9 +595,17 @@ class Verifier:
             r = page.goto(self.base + rf(val), wait_until='load', timeout=15000)
             return (r and r.status < 400), f"status {r.status if r else '?'}"
         if verb in ('click', 'hover'):
-            loc = page.locator(f"[data-testid='{val}']")
-            if not loc.count(): return False, 'anchor not found'
-            getattr(loc.first, verb)()
+            if isinstance(val, dict):
+                loc = page.locator(f"[data-testid='{val['anchor']}']")
+                if val.get('text'): loc = loc.filter(has_text=rf(val['text']))
+                loc = loc.nth(val.get('nth', 0))
+                if not loc.count(): return False, 'anchor (with qualifier) not found'
+                target = loc
+            else:
+                loc = page.locator(f"[data-testid='{val}']")
+                if not loc.count(): return False, 'anchor not found'
+                target = loc.first
+            getattr(target, verb)()
             try: page.wait_for_load_state('load', timeout=5000)
             except Exception: pass
             return True, ''
@@ -647,6 +657,9 @@ class Verifier:
                 t = rf(val['contains_text'])
                 if not loc.filter(has_text=t).count() and t not in (loc.first.inner_text() if loc.count() else ''):
                     return False, f"text {t!r} not found"
+            if 'not_contains_text' in val:
+                t = rf(val['not_contains_text'])
+                if loc.count() and loc.filter(has_text=t).count(): return False, f"text {t!r} present but forbidden"
             if 'count_min' in val:
                 if loc.count() < val['count_min']: return False, f"count {loc.count()}"
             if val.get('text_not_empty'):

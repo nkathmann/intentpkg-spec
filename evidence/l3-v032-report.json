@@ -1,0 +1,5342 @@
+{
+  "summary": {
+    "sub": {
+      "structural": {
+        "pass": 562,
+        "fail": 0,
+        "skip": 49,
+        "fidelity": 1.0,
+        "coverage": 0.92
+      },
+      "token": {
+        "pass": 50,
+        "fail": 0,
+        "skip": 0,
+        "fidelity": 1.0,
+        "coverage": 1.0
+      },
+      "flow": {
+        "pass": 83,
+        "fail": 0,
+        "skip": 0,
+        "fidelity": 1.0,
+        "coverage": 1.0
+      },
+      "axe": {
+        "pass": 13,
+        "fail": 0,
+        "skip": 0,
+        "fidelity": 1.0,
+        "coverage": 1.0
+      }
+    },
+    "gates": {
+      "pass": 708,
+      "fail": 0,
+      "skip": 49
+    },
+    "fidelity": 1.0,
+    "level": "pass"
+  },
+  "checks": [
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "schema:*",
+      "status": "skip",
+      "detail": "no schema directory found (--schemas / $INTENTPKG_SCHEMAS / spec/schemas)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "validate:ui-coherence",
+      "status": "pass",
+      "detail": "59 anchors, 8 flows"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:title",
+      "status": "pass",
+      "detail": "Sign in \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.wordmark:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.tagline",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.tagline:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.tagline:copy",
+      "status": "pass",
+      "detail": "got 'Signal sent. Help on the way.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.card",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.card:role",
+      "status": "pass",
+      "detail": "tag FORM role None want form"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.username-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.username-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.password-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.password-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.submit-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.submit-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:anchor:login.main.submit-btn:copy",
+      "status": "pass",
+      "detail": "got 'Sign In'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:desktop:focus-order",
+      "status": "pass",
+      "detail": "tab sequence ['login.main.username-input', 'login.main.password-input', 'login.main.submit-btn']"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:login:default:anonymous:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:title",
+      "status": "pass",
+      "detail": "Sign in \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.wordmark:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.tagline",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.tagline:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.tagline:copy",
+      "status": "pass",
+      "detail": "got 'Signal sent. Help on the way.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.card",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.card:role",
+      "status": "pass",
+      "detail": "tag FORM role None want form"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.username-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.username-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.password-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.password-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.submit-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.submit-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:login:default:anonymous:mobile:anchor:login.main.submit-btn:copy",
+      "status": "pass",
+      "detail": "got 'Sign In'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.new-ticket-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.new-ticket-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.header.new-ticket-btn:copy",
+      "status": "pass",
+      "detail": "got 'New Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row.subject-link",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row.subject-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:desktop:anchor:ticket-list.main.row.unrouted-flag",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-list:default:user1:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.new-ticket-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.new-ticket-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.header.new-ticket-btn:copy",
+      "status": "pass",
+      "detail": "got 'New Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row.subject-link",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row.subject-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:user1:mobile:anchor:ticket-list.main.row.unrouted-flag",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.header.new-ticket-btn:role-scoped-absent",
+      "status": "pass",
+      "detail": "must be absent for role it_analyst"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.subject-link",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.subject-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.status-badge",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.unrouted-flag",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:desktop:anchor:ticket-list.main.row.unrouted-flag:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-list:default:hwa1:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.header.new-ticket-btn:role-scoped-absent",
+      "status": "pass",
+      "detail": "must be absent for role it_analyst"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.subject-link",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.subject-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.status-badge",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.unrouted-flag",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:default:hwa1:mobile:anchor:ticket-list.main.row.unrouted-flag:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.new-ticket-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.new-ticket-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.header.new-ticket-btn:copy",
+      "status": "pass",
+      "detail": "got 'New Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:desktop:anchor:ticket-list.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'No tickets yet. Create one when something needs attention.'"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-list:empty:user3:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.new-ticket-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.new-ticket-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.header.new-ticket-btn:copy",
+      "status": "pass",
+      "detail": "got 'New Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:user3:mobile:anchor:ticket-list.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'No tickets yet. Create one when something needs attention.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.header.new-ticket-btn:role-scoped-absent",
+      "status": "pass",
+      "detail": "must be absent for role it_analyst"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:desktop:anchor:ticket-list.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'Nothing assigned right now.'"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-list:empty:swa2:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:title",
+      "status": "pass",
+      "detail": "Tickets \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:region:main:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.user-menu",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.user-menu:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.header.new-ticket-btn:role-scoped-absent",
+      "status": "pass",
+      "detail": "must be absent for role it_analyst"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.status-filter",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.status-filter:role",
+      "status": "pass",
+      "detail": "tag DIV role tablist want tablist"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.status-filter.tab",
+      "status": "pass",
+      "detail": "count 5 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.status-filter.tab:role",
+      "status": "pass",
+      "detail": "tag A role tab want tab"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-list:empty:swa2:mobile:anchor:ticket-list.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'Nothing assigned right now.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:title",
+      "status": "pass",
+      "detail": "New Ticket \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.subject-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.subject-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.body-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.body-input:role",
+      "status": "pass",
+      "detail": "tag TEXTAREA role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.category-select",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.category-select:role",
+      "status": "pass",
+      "detail": "tag SELECT role None want combobox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.category-select:options",
+      "status": "pass",
+      "detail": "['hardware', 'software', 'network', 'access', 'other']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.submit-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.submit-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:anchor:ticket-create.main.submit-btn:copy",
+      "status": "pass",
+      "detail": "got 'Create Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:desktop:focus-order",
+      "status": "pass",
+      "detail": "tab sequence ['ticket-create.header.wordmark', 'ticket-create.header.user-menu', 'ticket-create.main.subject-input', 'ticket-create.main.body-input', 'ticket-create.main.category-select']"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-create:default:user1:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:title",
+      "status": "pass",
+      "detail": "New Ticket \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 10]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.subject-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.subject-input:role",
+      "status": "pass",
+      "detail": "tag INPUT role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.body-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.body-input:role",
+      "status": "pass",
+      "detail": "tag TEXTAREA role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.category-select",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.category-select:role",
+      "status": "pass",
+      "detail": "tag SELECT role None want combobox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.category-select:options",
+      "status": "pass",
+      "detail": "['hardware', 'software', 'network', 'access', 'other']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.submit-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.submit-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-create:default:user1:mobile:anchor:ticket-create.main.submit-btn:copy",
+      "status": "pass",
+      "detail": "got 'Create Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:title",
+      "status": "pass",
+      "detail": "Laptop won't dock \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:compose",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region:compose:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18, 24]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.close-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.ticket-header.close-btn:copy",
+      "status": "pass",
+      "detail": "got 'Close Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.body-input:role",
+      "status": "pass",
+      "detail": "tag TEXTAREA role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.attach-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.attach-input:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.send-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:desktop:anchor:ticket-detail.compose.send-btn:copy",
+      "status": "pass",
+      "detail": "got 'Send'"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-detail:open:user1:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:title",
+      "status": "pass",
+      "detail": "Laptop won't dock \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:compose",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region:compose:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18, 24]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.close-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.ticket-header.close-btn:copy",
+      "status": "pass",
+      "detail": "got 'Close Ticket'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.body-input:role",
+      "status": "pass",
+      "detail": "tag TEXTAREA role None want textbox"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.attach-input",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.attach-input:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.send-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:open:user1:mobile:anchor:ticket-detail.compose.send-btn:copy",
+      "status": "pass",
+      "detail": "got 'Send'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:title",
+      "status": "pass",
+      "detail": "Printer queue stuck \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.close-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.compose.body-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.compose.attach-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.compose.send-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.closed-banner",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.closed-banner:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:anchor:ticket-detail.ticket-header.closed-banner:copy",
+      "status": "pass",
+      "detail": "got 'This ticket is closed.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:absent:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:absent:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:desktop:absent:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-detail:closed:user2:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:title",
+      "status": "pass",
+      "detail": "Printer queue stuck \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.close-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.compose.body-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.compose.attach-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.compose.send-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state closed"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.closed-banner",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.closed-banner:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:anchor:ticket-detail.ticket-header.closed-banner:copy",
+      "status": "pass",
+      "detail": "got 'This ticket is closed.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:absent:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:absent:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:closed:user2:mobile:absent:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:title",
+      "status": "pass",
+      "detail": "Old monitor flicker \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.close-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.compose.body-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.compose.attach-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.compose.send-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.archived-banner",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.archived-banner:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:anchor:ticket-detail.ticket-header.archived-banner:copy",
+      "status": "pass",
+      "detail": "got 'This ticket is archived and read-only.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:absent:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:absent:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:desktop:absent:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:ticket-detail:archived:user2:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:title",
+      "status": "pass",
+      "detail": "Old monitor flicker \u2014 Beacon Helpdesk"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:region:ticket-header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:region:ticket-header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:region:thread",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:region-order",
+      "status": "pass",
+      "detail": "[7, 11, 18]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.subject",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.subject:role",
+      "status": "pass",
+      "detail": "tag H1 role None want heading"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.status-badge",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.status-badge:role",
+      "status": "pass",
+      "detail": "tag SPAN role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.category",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.category:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.creator",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.creator:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.assignee",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.assignee:role",
+      "status": "pass",
+      "detail": "tag SPAN role None want note"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.close-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message:role",
+      "status": "pass",
+      "detail": "tag ARTICLE role None want article"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message:order",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message.avatar",
+      "status": "pass",
+      "detail": "count 2 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message.avatar:role",
+      "status": "pass",
+      "detail": "tag SPAN role img want img"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.thread.message.attachment",
+      "status": "skip",
+      "detail": "optional, not present under fixture"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.compose.body-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.compose.attach-input:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.compose.send-btn:state-hidden",
+      "status": "pass",
+      "detail": "hidden in state archived"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.archived-banner",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.archived-banner:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:anchor:ticket-detail.ticket-header.archived-banner:copy",
+      "status": "pass",
+      "detail": "got 'This ticket is archived and read-only.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:absent:ticket-detail.compose.body-input",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:absent:ticket-detail.compose.send-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:ticket-detail:archived:user2:mobile:absent:ticket-detail.ticket-header.close-btn",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:title",
+      "status": "pass",
+      "detail": "Users \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:nav",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:nav:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:nav:closed",
+      "status": "pass",
+      "detail": "0 interactive vs 3 declared"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:region-order",
+      "status": "pass",
+      "detail": "[8, 12, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk Admin'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.header.accent-bar",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.users-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.users-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.users-link:copy",
+      "status": "pass",
+      "detail": "got 'Users'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.specialties-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.specialties-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.specialties-link:copy",
+      "status": "pass",
+      "detail": "got 'Specialties'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.reports-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.reports-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.nav.reports-link:copy",
+      "status": "pass",
+      "detail": "got 'Archived Reports'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table:role",
+      "status": "pass",
+      "detail": "tag TABLE role None want table"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table:columns",
+      "status": "pass",
+      "detail": "headers ['username', 'role', 'status', 'created', '']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table.row",
+      "status": "pass",
+      "detail": "count 8 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-btn:copy",
+      "status": "pass",
+      "detail": "got 'Create User'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-form.username-input",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-form.password-input",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-form.role-select",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-form.submit-btn",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.create-form.error",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table.row.toggle-active",
+      "status": "pass",
+      "detail": "count 8 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:desktop:anchor:admin-users.main.user-table.row.toggle-active:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:admin-users:default:admin:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:title",
+      "status": "pass",
+      "detail": "Users \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region:header:geometry",
+      "status": "skip",
+      "detail": "geometry checks not implemented in v0.3 runner"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region-order",
+      "status": "pass",
+      "detail": "[8, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region:nav-drawer:initially-hidden",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:region:nav-drawer:revealed",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.wordmark",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.wordmark:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.wordmark:copy",
+      "status": "pass",
+      "detail": "got 'Beacon Helpdesk Admin'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.accent-bar",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.menu-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.header.menu-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.users-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.users-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.users-link:copy",
+      "status": "pass",
+      "detail": "got 'Users'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.specialties-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.specialties-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.specialties-link:copy",
+      "status": "pass",
+      "detail": "got 'Specialties'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.reports-link",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.reports-link:role",
+      "status": "pass",
+      "detail": "tag A role None want link"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.nav.reports-link:copy",
+      "status": "pass",
+      "detail": "got 'Archived Reports'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table:role",
+      "status": "pass",
+      "detail": "tag TABLE role None want table"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table:columns",
+      "status": "pass",
+      "detail": "headers ['username', 'role', 'status', 'created', '']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table.row",
+      "status": "pass",
+      "detail": "count 8 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-btn",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-btn:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-btn:copy",
+      "status": "pass",
+      "detail": "got 'Create User'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-form.username-input",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-form.password-input",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-form.role-select",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-form.submit-btn",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.create-form.error",
+      "status": "skip",
+      "detail": "state_scope create-open \u2014 verified via flow"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table.row.toggle-active",
+      "status": "pass",
+      "detail": "count 8 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-users:default:admin:mobile:anchor:admin-users.main.user-table.row.toggle-active:role",
+      "status": "pass",
+      "detail": "tag A role button want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:title",
+      "status": "pass",
+      "detail": "Specialties \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:region:nav",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:region:nav:closed",
+      "status": "skip",
+      "detail": "closed region with no declared components on this screen"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:region-order",
+      "status": "pass",
+      "detail": "[8, 12, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-list",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-list:role",
+      "status": "pass",
+      "detail": "tag UL role None want list"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row:role",
+      "status": "pass",
+      "detail": "tag LI role None want listitem"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row.specialty-chips",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row.specialty-chips:role",
+      "status": "pass",
+      "detail": "tag FIELDSET role None want group"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row.save-btn",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row.save-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:desktop:anchor:admin-specialties.main.analyst-row.save-btn:copy",
+      "status": "pass",
+      "detail": "got 'Save'"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:admin-specialties:default:admin:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:title",
+      "status": "pass",
+      "detail": "Specialties \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:region-order",
+      "status": "pass",
+      "detail": "[8, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-list",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-list:role",
+      "status": "pass",
+      "detail": "tag UL role None want list"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row:role",
+      "status": "pass",
+      "detail": "tag LI role None want listitem"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row.specialty-chips",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row.specialty-chips:role",
+      "status": "pass",
+      "detail": "tag FIELDSET role None want group"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row.save-btn",
+      "status": "pass",
+      "detail": "count 4 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row.save-btn:role",
+      "status": "pass",
+      "detail": "tag BUTTON role None want button"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-specialties:default:admin:mobile:anchor:admin-specialties.main.analyst-row.save-btn:copy",
+      "status": "pass",
+      "detail": "got 'Save'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:title",
+      "status": "pass",
+      "detail": "Archived Reports \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:region:nav",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:region:nav:closed",
+      "status": "skip",
+      "detail": "closed region with no declared components on this screen"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:region-order",
+      "status": "pass",
+      "detail": "[8, 12, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:anchor:admin-reports.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:anchor:admin-reports.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:desktop:anchor:admin-reports.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'No archived tickets yet. Closed tickets archive automatically after 24 hours.'"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:admin-reports:empty:admin:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:title",
+      "status": "pass",
+      "detail": "Archived Reports \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:region-order",
+      "status": "pass",
+      "detail": "[8, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:anchor:admin-reports.main.empty",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:anchor:admin-reports.main.empty:role",
+      "status": "pass",
+      "detail": "tag P role None want paragraph"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:empty:admin:mobile:anchor:admin-reports.main.empty:copy",
+      "status": "pass",
+      "detail": "got 'No archived tickets yet. Closed tickets archive automatically after 24 hours.'"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:title",
+      "status": "pass",
+      "detail": "Archived Reports \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:region:nav",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:region:nav:closed",
+      "status": "skip",
+      "detail": "closed region with no declared components on this screen"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:region-order",
+      "status": "pass",
+      "detail": "[8, 12, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.archived-table",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.archived-table:role",
+      "status": "pass",
+      "detail": "tag TABLE role None want table"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.archived-table:columns",
+      "status": "pass",
+      "detail": "headers ['subject', 'category', 'creator', 'assignee', 'closed', 'archived']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.archived-table.row",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.archived-table.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.filters",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.filters:role",
+      "status": "pass",
+      "detail": "tag DIV role group want group"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.count-summary",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:desktop:anchor:admin-reports.main.count-summary:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "A",
+      "gate": "screen:admin-reports:populated:admin:desktop:axe",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:renders",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:title",
+      "status": "pass",
+      "detail": "Archived Reports \u2014 Beacon Admin"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:region:header",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:region:main",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:region-order",
+      "status": "pass",
+      "detail": "[8, 20]"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.archived-table",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.archived-table:role",
+      "status": "pass",
+      "detail": "tag TABLE role None want table"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.archived-table:columns",
+      "status": "pass",
+      "detail": "headers ['subject', 'category', 'creator', 'assignee', 'closed', 'archived']"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.archived-table.row",
+      "status": "pass",
+      "detail": "count 1 (n>=1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.archived-table.row:role",
+      "status": "pass",
+      "detail": "tag TR role None want row"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.filters",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.filters:role",
+      "status": "pass",
+      "detail": "tag DIV role group want group"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.count-summary",
+      "status": "pass",
+      "detail": "count 1 (n==1)"
+    },
+    {
+      "level": "L3",
+      "sub": "S",
+      "gate": "screen:admin-reports:populated:admin:mobile:anchor:admin-reports.main.count-summary:role",
+      "status": "pass",
+      "detail": "tag P role status want status"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-bg",
+      "status": "pass",
+      "detail": "got '#FFFFFF'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-surface",
+      "status": "pass",
+      "detail": "got '#FFFFFF'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-surface-muted",
+      "status": "pass",
+      "detail": "got '#F6F8FA'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-border",
+      "status": "pass",
+      "detail": "got '#E3E8EE'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-text",
+      "status": "pass",
+      "detail": "got '#1A2233'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-text-muted",
+      "status": "pass",
+      "detail": "got '#5B6676'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-primary",
+      "status": "pass",
+      "detail": "got '#2F6BFF'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-primary-hover",
+      "status": "pass",
+      "detail": "got '#1E54D6'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-primary-soft",
+      "status": "pass",
+      "detail": "got '#EAF1FF'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-success",
+      "status": "pass",
+      "detail": "got '#1F9D6B'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-warning",
+      "status": "pass",
+      "detail": "got '#C8791A'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-danger",
+      "status": "pass",
+      "detail": "got '#D64545'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "root-var:--color-admin-accent",
+      "status": "pass",
+      "detail": "got '#6A3FB5'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:body:font-family",
+      "status": "pass",
+      "detail": "got 'Inter, system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif'"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:body:background-color",
+      "status": "pass",
+      "detail": "got rgb(255, 255, 255)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:login.main.submit-btn:background-color",
+      "status": "pass",
+      "detail": "got rgb(47, 107, 255)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-list.header.new-ticket-btn:background-color",
+      "status": "pass",
+      "detail": "got rgb(47, 107, 255)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-detail.compose.send-btn:background-color",
+      "status": "pass",
+      "detail": "got rgb(47, 107, 255)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-detail.ticket-header.status-badge:background-color@open",
+      "status": "pass",
+      "detail": "got rgb(234, 241, 255)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-detail.ticket-header.status-badge:background-color@closed",
+      "status": "pass",
+      "detail": "got rgb(228, 243, 237)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-detail.ticket-header.status-badge:background-color@archived",
+      "status": "pass",
+      "detail": "got rgb(246, 248, 250)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:ticket-list.main.row.unrouted-flag:color",
+      "status": "pass",
+      "detail": "got rgb(200, 121, 26)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:admin-users.header.accent-bar:background-color",
+      "status": "pass",
+      "detail": "got rgb(106, 63, 181)"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:login",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "portal-palette:login",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:login",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:login",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:ticket-list",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "portal-palette:ticket-list",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:ticket-list",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:ticket-list",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:ticket-create",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "portal-palette:ticket-create",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:ticket-create",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:ticket-create",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:ticket-detail",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "portal-palette:ticket-detail",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:ticket-detail",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:ticket-detail",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:admin-users",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:admin-users",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:admin-users",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:admin-specialties",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:admin-specialties",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:admin-specialties",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "palette:admin-reports",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-scale:admin-reports",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "type-weight:admin-reports",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step2:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step3:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step4:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step5:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step6:select",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step7:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:admin-users.main.create-form.error:color@flow:admin-create-user",
+      "status": "pass",
+      "detail": "got rgb(214, 69, 69)"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step8:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step9:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step10:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step11:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:step12:expect_db",
+      "status": "pass",
+      "detail": "delta 1.0 want 1.0"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:admin-create-user",
+      "status": "pass",
+      "detail": "12 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step2:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step3:http",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step4:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step5:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step6:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step7:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:step8:expect_db",
+      "status": "pass",
+      "detail": "got 'ARCHIVED'"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:archive-and-report",
+      "status": "pass",
+      "detail": "8 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step2:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step3:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step4:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step5:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step6:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step7:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step8:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step9:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:step10:expect_db",
+      "status": "pass",
+      "detail": "got 'CLOSED'"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:converse-and-close",
+      "status": "pass",
+      "detail": "10 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step2:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step3:expect",
+      "status": "pass",
+      "detail": "path /tickets/new"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step4:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step5:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step6:select",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step7:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step8:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step9:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step10:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:step11:expect_db",
+      "status": "pass",
+      "detail": "delta 1.0 want 1.0"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:create-ticket",
+      "status": "pass",
+      "detail": "11 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step2:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step3:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step4:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step5:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step6:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:step7:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:filter-tickets",
+      "status": "pass",
+      "detail": "7 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step2:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step3:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step4:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step5:expect",
+      "status": "pass",
+      "detail": "path /login"
+    },
+    {
+      "level": "L3",
+      "sub": "T",
+      "gate": "binding:login.main.error:color@flow:login-error",
+      "status": "pass",
+      "detail": "got rgb(214, 69, 69)"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step6:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:step7:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login-error",
+      "status": "pass",
+      "detail": "7 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step2:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step3:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step4:fill",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step5:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step6:expect",
+      "status": "pass",
+      "detail": "path /tickets"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:step7:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:login",
+      "status": "pass",
+      "detail": "7 steps"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:step1:goto",
+      "status": "pass",
+      "detail": "status 200"
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:step2:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:step3:click",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:step4:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:step5:expect",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list:no-unexpected-dialogs",
+      "status": "pass",
+      "detail": ""
+    },
+    {
+      "level": "L3",
+      "sub": "F",
+      "gate": "flow:open-ticket-from-list",
+      "status": "pass",
+      "detail": "5 steps"
+    }
+  ]
+}

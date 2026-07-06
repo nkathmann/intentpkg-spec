@@ -1,0 +1,14 @@
+id: filter-tickets
+description: "The status filter actually filters (v0.3.2 — coverage-gap promotion). user2 has both CLOSED and IN_PROGRESS tickets seeded."
+viewport: desktop
+fixture: seeded
+auth: { principal: user2 }
+steps:
+  - goto: /tickets
+  - click: { anchor: ticket-list.main.status-filter.tab, text: "CLOSED" }
+  - expect: { anchor: ticket-list.main.row, contains_text: "Printer queue stuck" }
+  - expect: { anchor: ticket-list.main.row, not_contains_text: "VPN drops every hour" }
+  - click: { anchor: ticket-list.main.status-filter.tab, text: "IN_PROGRESS" }
+  - expect: { anchor: ticket-list.main.row, contains_text: "VPN drops every hour" }
+  - expect: { anchor: ticket-list.main.row, not_contains_text: "Printer queue stuck" }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }
