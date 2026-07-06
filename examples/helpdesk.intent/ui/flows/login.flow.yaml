@@ -1,0 +1,14 @@
+id: login
+description: "Real-credential login; role-based landing (the one flow that must not use header-principal injection)"
+viewport: desktop
+fixture: seeded
+auth: none                       # exercises the actual login form
+steps:
+  - goto: /login
+  - expect: { anchor: login.main.wordmark, visible: true }
+  - fill:  { anchor: login.main.username-input, value: "$fixture.user1.username" }
+  - fill:  { anchor: login.main.password-input, value: "$fixture.user1.password" }
+  - click: login.main.submit-btn
+  - expect: { url_path: /tickets }
+  - expect: { anchor: ticket-list.header.wordmark, visible: true }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

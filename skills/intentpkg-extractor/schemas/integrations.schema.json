@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/integrations.schema.json",
+  "title": "integrations/integrations.yaml",
+  "type": "object",
+  "required": ["integrations"],
+  "properties": {
+    "integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "type": "string" },
+          "role": { "type": "string" },
+          "via": { "type": "string" },
+          "used_for": { "type": "string" },
+          "auth": { "type": "string" },
+          "endpoints": { "type": "array", "items": { "type": "string" } },
+          "secret_refs": { "type": "array", "items": { "type": "string" } },
+          "replaceable": { "type": "boolean" },
+          "note": { "type": "string" },
+          "notes": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

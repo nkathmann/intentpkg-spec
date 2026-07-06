@@ -1,6 +1,10 @@
-# intentpkg Specification, v0.2-draft
+# intentpkg Specification, v0.3.1-draft
 
-Working name: `intentpkg`. Format identifier: `intentpkg/v0.2`. Packages
+> v0.3.1 adds the UI contract layer (`ui/`: screens, tokens, copy, flows) and
+> conformance level L3 UI-Verified; Governed renumbers L3 -> L4. UI layer
+> normative text: SPEC-UI.md. JSON Schemas in schemas/ are normative for L0.
+
+Working name: `intentpkg`. Format identifier: `intentpkg/v0.3.1`. Packages
 declaring `intentpkg/v0.1` remain valid; v0.2 changes are additive.
 
 The key words MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are to be
@@ -271,11 +275,16 @@ or a map of store-name → adapter matching `manifest.datastores`.
   well-formed, schema refs resolvable.
 - **L2 Verified** — behavioral gates pass against a RUNNING build: goldens,
   invariant probes, db_checks.
-- **L3 Governed** — build satisfies policy bindings and emits attestation:
+- **L3 UI-Verified** — interface contract gates pass against a RUNNING build
+  in a real browser: screen structure and anchors, design-token bindings and
+  palette conformance, verbatim copy, journey-shape flows, accessibility
+  rules. Requires a `ui/` layer; packages without one report not-applicable.
+  Normative definition: SPEC-UI.md.
+- **L4 Governed** — build satisfies policy bindings and emits attestation:
   SBOM, signed build provenance, and a record of ambient context present at
   build time. (Context-at-build-time is attestation-relevant: build agents
   observably absorb ambient instructions; what was present must be
-  recordable.) L3 is specified at this level of detail only in v0.2.
+  recordable.) L4 is specified at this level of detail only in v0.2.
 
 **Metrics.** Reports MUST include:
 - **fidelity** = pass / (pass + fail) over executed gates;
@@ -364,7 +373,7 @@ Secret VALUES never appear in packages — references only. The testing
 contract is an authentication bypass by design and MUST be inert outside
 explicit test opt-in. Regeneration cadence is a moving-target defense
 (application-layer persistence dies at rebuild) but each rebuild is also a
-fresh supply-chain event: L3 attestation (SBOM, signed provenance,
+fresh supply-chain event: L4 attestation (SBOM, signed provenance,
 build-time context record) exists to make that trade auditable. Policy
 deny-lists in `build/constraints.yaml` are the injection point for
 vulnerability intelligence at generation time.

@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/screens.schema.json",
+  "title": "ui/screens.yaml",
+  "type": "object",
+  "required": [
+    "version",
+    "screens"
+  ],
+  "properties": {
+    "version": {},
+    "viewports_note": {
+      "type": "string"
+    },
+    "screens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "route",
+          "regions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "portal": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "title_pattern": {
+            "type": "string"
+          },
+          "auth": {
+            "type": "string"
+          },
+          "mobile_note": {
+            "type": "string"
+          },
+          "principals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "regions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "landmark"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "landmark": {
+                  "enum": [
+                    "banner",
+                    "main",
+                    "navigation",
+                    "form",
+                    "region",
+                    "contentinfo",
+                    "complementary",
+                    "search"
+                  ]
+                },
+                "geometry": {
+                  "type": "object"
+                },
+                "viewports": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "states": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "closed": {
+                  "type": "boolean"
+                },
+                "initially": {
+                  "enum": [
+                    "hidden"
+                  ]
+                },
+                "revealed_by": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "anchor",
+                "region"
+              ],
+              "properties": {
+                "anchor": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "copy": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)+$"
+                },
+                "copy_by_role": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)+$"
+                  }
+                },
+                "collection": {
+                  "type": "boolean"
+                },
+                "optional": {
+                  "type": "boolean"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "viewports": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "state": {
+                  "type": "string"
+                },
+                "states_visible": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "state_scope": {
+                  "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "order": {
+                  "enum": [
+                    "chronological"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "states": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "fixture": {
+                  "type": "string"
+                },
+                "principals": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "route_binding": {
+                  "type": "string"
+                },
+                "setup_hook": {
+                  "type": "object",
+                  "required": [
+                    "job"
+                  ],
+                  "properties": {
+                    "job": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "expect_absent": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"
+                  }
+                },
+                "expect_anchor": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "focus_order": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(\\.[a-z0-9]+(-[a-z0-9]+)*)+$"
+            }
+          },
+          "a11y": {
+            "type": "object",
+            "properties": {
+              "axe": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "navigation": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/tokens.schema.json",
+  "title": "ui/tokens.yaml",
+  "type": "object",
+  "required": [
+    "version",
+    "tokens"
+  ],
+  "properties": {
+    "version": {},
+    "tokens": {
+      "type": "object",
+      "required": [
+        "color"
+      ],
+      "properties": {
+        "color": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          }
+        },
+        "typography": {
+          "type": "object"
+        },
+        "spacing": {
+          "type": "object"
+        },
+        "radius": {
+          "type": "object"
+        },
+        "shadow": {
+          "type": "object"
+        },
+        "layout": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "property"
+        ],
+        "properties": {
+          "anchor": {
+            "type": "string"
+          },
+          "selector": {
+            "type": "string"
+          },
+          "property": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          },
+          "token_by_state": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "tint_tolerance": {
+            "type": "string"
+          },
+          "context": {
+            "type": "object",
+            "properties": {
+              "principal": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "flow": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "anchor"
+            ]
+          },
+          {
+            "required": [
+              "selector"
+            ]
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "portal_palette_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "portal"
+        ],
+        "properties": {
+          "portal": {
+            "type": "string"
+          },
+          "forbidden_tokens": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "accent_token": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "palette_conformance": {
+      "type": "object"
+    },
+    "type_conformance": {
+      "type": "object"
+    },
+    "spacing_conformance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

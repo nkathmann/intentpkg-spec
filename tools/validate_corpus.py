@@ -23,6 +23,9 @@ MAP = [
     ("interface/surfaces.yaml", "surfaces"),
     ("interface/unscoped-surfaces.yaml", "unscoped-surfaces"),
     ("build/constraints.yaml", "constraints"),
+    ("ui/screens.yaml", "screens"),
+    ("ui/tokens.yaml", "tokens"),
+    ("ui/copy.yaml", "copy"),
 ]
 
 fails = 0
@@ -31,7 +34,9 @@ for pkg in sys.argv[1:]:
     print(f"── {pkg.name} ──")
     # golden files
     targets = list(MAP) + [(str(p.relative_to(pkg)), "golden-cases")
-                           for p in sorted(pkg.glob("behavior/golden/*.yaml"))]
+                           for p in sorted(pkg.glob("behavior/golden/*.yaml"))] \
+                        + [(str(p.relative_to(pkg)), "flow")
+                           for p in sorted(pkg.glob("ui/flows/*.flow.yaml"))]
     for rel, sname in targets:
         f = pkg / rel
         if not f.exists():

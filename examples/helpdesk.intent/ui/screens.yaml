@@ -1,0 +1,346 @@
+# UI structural contract (intentpkg v0.3 §5). Normative for L3.S gates.
+# Derived 1:1 from the authored design in interface/surfaces.yaml — that file
+# remains the design-intent prose; THIS file is what the runner executes.
+#
+# Auth for screen rendering: the runner injects the v0.2 testing contract
+# (TEST_AUTH=1 + x-test-principal header) on browser requests. Flows that
+# exercise login itself use real credentials from fixtures.
+#
+# v0.3.1 additions exercised by this package (multi-role app):
+#   - `principals:` per screen/state — which fixture principal to render as
+#   - `roles:` on components — assert presence only for listed principals' roles
+#   - `collection: true` — anchor may repeat (table rows); gate asserts >=1
+version: 0.3
+viewports_note: "declared in manifest ui_substrate.viewports: desktop 1440x900, mobile 390x844"
+
+screens:
+  # ── user portal ──────────────────────────────────────────────────────────
+  - id: login
+    route: /login
+    portal: user
+    title: "Sign in — Beacon Helpdesk"
+    auth: none
+    principals: [anonymous]
+    regions:
+      - id: main
+        landmark: main
+    components:
+      - anchor: login.main.wordmark
+        region: main
+        role: heading
+        copy: brand.wordmark
+      - anchor: login.main.tagline
+        region: main
+        role: paragraph
+        copy: brand.tagline
+      - anchor: login.main.card
+        region: main
+        role: form
+      - anchor: login.main.username-input
+        region: main
+        role: textbox
+      - anchor: login.main.password-input
+        region: main
+        role: textbox
+      - anchor: login.main.submit-btn
+        region: main
+        role: button
+        copy: cta.sign-in
+      - anchor: login.main.error
+        region: main
+        role: alert
+        state: error          # induced by flow login-error, not fixture
+        copy: error.bad-credentials
+    states:
+      - id: default
+        fixture: seeded
+    focus_order: [login.main.username-input, login.main.password-input, login.main.submit-btn]   # v0.3.1: ordered subsequence of the tab sequence
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+  - id: ticket-list
+    route: /tickets
+    portal: user
+    title: "Tickets — Beacon Helpdesk"
+    auth: session-required
+    principals: [user1, user3, hwa1, swa2]   # user w/ tickets, user w/o, analyst w/, analyst w/o
+    regions:
+      - id: header
+        landmark: banner
+        geometry: { position: top, height: { min: 56, max: 96 } }
+      - id: main
+        landmark: main
+        geometry: { max_width: 1120 }        # container-max
+    components:
+      - anchor: ticket-list.header.wordmark
+        region: header
+        role: link
+        copy: brand.wordmark
+      - anchor: ticket-list.header.user-menu
+        region: header
+        role: button
+      - anchor: ticket-list.header.new-ticket-btn
+        region: header
+        role: button
+        roles: [user]                        # users only; absent for analysts
+        copy: cta.new-ticket
+      - anchor: ticket-list.main.status-filter
+        region: main
+        role: tablist                        # segmented control
+      - anchor: ticket-list.main.row
+        region: main
+        role: row
+        collection: true                     # repeats per ticket
+        state: default
+      - anchor: ticket-list.main.row.status-badge
+        region: main
+        role: status
+        collection: true
+        state: default
+      - anchor: ticket-list.main.row.unrouted-flag
+        region: main
+        role: status
+        collection: true
+        state: default
+        optional: true                       # present only on unrouted rows
+      - anchor: ticket-list.main.empty
+        region: main
+        role: paragraph
+        state: empty
+        copy_by_role:                        # role-conditional copy binding
+          user: empty.tickets-user
+          it_analyst: empty.tickets-analyst
+    states:
+      - id: default
+        fixture: seeded
+        principals: [user1, hwa1]
+      - id: empty
+        fixture: seeded
+        principals: [user3, swa2]            # seeded principals with zero tickets
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+  - id: ticket-create
+    route: /tickets/new
+    portal: user
+    title: "New Ticket — Beacon Helpdesk"
+    auth: session-required
+    principals: [user1]
+    regions:
+      - { id: header, landmark: banner }
+      - { id: main, landmark: main }
+    components:
+      - { anchor: ticket-create.main.subject-input, region: main, role: textbox }
+      - { anchor: ticket-create.main.body-input, region: main, role: textbox }
+      - anchor: ticket-create.main.category-select
+        region: main
+        role: combobox
+        options: [hardware, software, network, access, other]   # order asserted
+      - anchor: ticket-create.main.submit-btn
+        region: main
+        role: button
+        copy: cta.create-ticket
+    states:
+      - { id: default, fixture: seeded }
+    focus_order: [ticket-create.main.subject-input, ticket-create.main.body-input, ticket-create.main.category-select]
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+  - id: ticket-detail
+    route: /tickets/{id}
+    portal: user
+    title_pattern: "* — Beacon Helpdesk"     # subject varies; suffix pinned
+    auth: session-required
+    principals: [user1, user2]
+    regions:
+      - { id: header, landmark: banner }
+      - id: ticket-header
+        landmark: region
+        geometry: { position: top-of-main }
+      - id: thread
+        landmark: main
+      - id: compose
+        landmark: form
+        states: [open]                       # v0.3.1: region is state-scoped
+        geometry: { position: bottom }       # sticky compose
+    components:
+      - { anchor: ticket-detail.ticket-header.subject, region: ticket-header, role: heading }
+      - { anchor: ticket-detail.ticket-header.status-badge, region: ticket-header, role: status }
+      - { anchor: ticket-detail.ticket-header.category, region: ticket-header, role: note }
+      - { anchor: ticket-detail.ticket-header.creator, region: ticket-header, role: note }
+      - { anchor: ticket-detail.ticket-header.assignee, region: ticket-header, role: note }
+      - anchor: ticket-detail.ticket-header.close-btn
+        region: ticket-header
+        role: button
+        states_visible: [open]               # hidden once CLOSED/ARCHIVED
+        copy: cta.close-ticket
+      - anchor: ticket-detail.thread.message
+        region: thread
+        role: article
+        collection: true
+        order: chronological                 # asserted via timestamps ascending
+      - anchor: ticket-detail.thread.message.avatar
+        region: thread
+        role: img
+        collection: true
+      - anchor: ticket-detail.thread.message.attachment
+        region: thread
+        role: link
+        collection: true
+        optional: true
+      - anchor: ticket-detail.compose.body-input
+        region: compose
+        role: textbox
+        states_visible: [open]
+      - anchor: ticket-detail.compose.attach-input
+        region: compose
+        role: button
+        states_visible: [open]
+      - anchor: ticket-detail.compose.send-btn
+        region: compose
+        role: button
+        states_visible: [open]
+        copy: cta.send
+      - anchor: ticket-detail.ticket-header.closed-banner
+        region: ticket-header
+        role: status
+        state: closed
+        copy: banner.closed
+      - anchor: ticket-detail.ticket-header.archived-banner
+        region: ticket-header
+        role: status
+        state: archived
+        copy: banner.archived
+    states:
+      - id: open
+        fixture: seeded
+        route_binding: "$fixture.user1_open_ticket.id"
+        principals: [user1]
+      - id: closed
+        fixture: seeded
+        route_binding: "$fixture.closed_ticket.id"
+        principals: [user2]                  # closed_ticket creator per seed
+        expect_absent: [ticket-detail.compose.body-input, ticket-detail.compose.send-btn, ticket-detail.ticket-header.close-btn]
+      - id: archived
+        fixture: seeded
+        setup_hook: { job: archive-closed }  # TEST_HOOKS=1 → POST /__test/jobs/archive-closed/run
+        route_binding: "$fixture.aged_closed_ticket.id"
+        principals: [user2]
+        expect_absent: [ticket-detail.compose.body-input, ticket-detail.compose.send-btn, ticket-detail.ticket-header.close-btn]
+    a11y: { axe: [wcag2a, wcag21aa] }
+    mobile_note: "priority reading surface at 390px — thread and compose must satisfy all assertions on the mobile viewport"
+
+  # ── admin portal ─────────────────────────────────────────────────────────
+  - id: admin-users
+    route: /admin/users
+    portal: admin
+    title: "Users — Beacon Admin"
+    auth: session-required
+    principals: [admin]
+    regions:
+      - id: header
+        landmark: banner
+        geometry: { position: top }
+      - id: nav
+        landmark: navigation
+        viewports: [desktop]
+        geometry: { position: left, width: { min: 200, max: 300 } }
+        closed: true                          # nav is a closed region — no surprise entries
+      - id: nav-drawer
+        landmark: navigation
+        viewports: [mobile]
+        initially: hidden
+        revealed_by: admin-users.header.menu-btn
+      - { id: main, landmark: main }
+    components:
+      - anchor: admin-users.header.wordmark
+        region: header
+        role: link
+        copy: brand.wordmark-admin
+      - anchor: admin-users.header.accent-bar
+        region: header
+        role: presentation
+      - { anchor: admin-users.header.menu-btn, region: header, role: button, viewports: [mobile] }
+      - { anchor: admin-users.nav.users-link, region: nav, role: link, copy: nav.users }
+      - { anchor: admin-users.nav.specialties-link, region: nav, role: link, copy: nav.specialties }
+      - { anchor: admin-users.nav.reports-link, region: nav, role: link, copy: nav.reports }
+      - { anchor: admin-users.main.user-table, region: main, role: table, columns: [username, role, status, created] }
+      - { anchor: admin-users.main.user-table.row, region: main, role: row, collection: true }
+      - { anchor: admin-users.main.create-btn, region: main, role: button, copy: cta.create-user }
+      - { anchor: admin-users.main.create-form.username-input, region: main, role: textbox, state_scope: create-open }
+      - { anchor: admin-users.main.create-form.password-input, region: main, role: textbox, state_scope: create-open }
+      - anchor: admin-users.main.create-form.role-select
+        region: main
+        role: combobox
+        state_scope: create-open
+        options: [user, it_analyst, administrator]
+      - { anchor: admin-users.main.create-form.submit-btn, region: main, role: button, state_scope: create-open }
+      - anchor: admin-users.main.create-form.error
+        region: main
+        role: alert
+        state_scope: create-open
+        optional: true
+        copy: error.duplicate-username
+      - { anchor: admin-users.main.user-table.row.toggle-active, region: main, role: button, collection: true }
+    states:
+      - { id: default, fixture: seeded }
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+  - id: admin-specialties
+    route: /admin/specialties
+    portal: admin
+    title: "Specialties — Beacon Admin"
+    auth: session-required
+    principals: [admin]
+    regions:
+      - { id: header, landmark: banner }
+      - { id: nav, landmark: navigation, viewports: [desktop], closed: true }
+      - { id: main, landmark: main }
+    components:
+      - { anchor: admin-specialties.main.analyst-list, region: main, role: list }
+      - { anchor: admin-specialties.main.analyst-row, region: main, role: listitem, collection: true }
+      - anchor: admin-specialties.main.analyst-row.specialty-chips
+        region: main
+        role: group
+        collection: true
+        options: [hardware, software, network, access, other]
+      - { anchor: admin-specialties.main.analyst-row.save-btn, region: main, role: button, collection: true, copy: cta.save }
+    states:
+      - { id: default, fixture: seeded }
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+  - id: admin-reports
+    route: /admin/reports/archived
+    portal: admin
+    title: "Archived Reports — Beacon Admin"
+    auth: session-required
+    principals: [admin]
+    regions:
+      - { id: header, landmark: banner }
+      - { id: nav, landmark: navigation, viewports: [desktop], closed: true }
+      - { id: main, landmark: main }
+    components:
+      - anchor: admin-reports.main.archived-table
+        region: main
+        role: table
+        state: populated
+        columns: [subject, category, creator, assignee, closed, archived]
+      - { anchor: admin-reports.main.archived-table.row, region: main, role: row, collection: true, state: populated }
+      - { anchor: admin-reports.main.filters, region: main, role: group, state: populated }
+      - { anchor: admin-reports.main.count-summary, region: main, role: status, state: populated }
+      - anchor: admin-reports.main.empty
+        region: main
+        role: paragraph
+        state: empty
+        copy: empty.archived
+    states:
+      - id: empty
+        fixture: seeded                       # nothing archived until the job runs
+      - id: populated
+        fixture: seeded
+        setup_hook: { job: archive-closed }   # archives aged_closed_ticket
+    a11y: { axe: [wcag2a, wcag21aa] }
+
+navigation:
+  post_login_routing:
+    - { principal: admin, lands_on: /admin/users }
+    - { principal: user1, lands_on: /tickets }
+    - { principal: hwa1, lands_on: /tickets }
+  portal_isolation: "admin routes return 404 for non-admin principals (per intent.md 404-not-403 rule); user-portal chrome must not appear on /admin/* and vice versa"

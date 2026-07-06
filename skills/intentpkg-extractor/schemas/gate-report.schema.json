@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/gate-report.schema.json",
+  "title": "conformance runner JSON report",
+  "type": "object",
+  "required": ["summary", "checks"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["levels", "gates", "fidelity"],
+      "properties": {
+        "levels": {
+          "type": "object",
+          "properties": { "L0": { "type": "string" }, "L1": { "type": "string" },
+                          "L2": { "type": "string" } }
+        },
+        "gates": {
+          "type": "object",
+          "required": ["pass", "fail", "skip"],
+          "properties": { "pass": {"type": "integer"}, "fail": {"type": "integer"},
+                          "skip": {"type": "integer"} }
+        },
+        "fidelity": { "type": ["number", "null"] },
+        "l2_fidelity": { "type": ["number", "null"] },
+        "l2_coverage": { "type": ["number", "null"] },
+        "coverage_note": { "type": "string" }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "gate", "status"],
+        "properties": {
+          "level": { "enum": ["L0", "L1", "L2", "L3"] },
+          "gate": { "type": "string" },
+          "status": { "enum": ["pass", "fail", "skip"] },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}

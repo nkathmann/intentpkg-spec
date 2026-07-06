@@ -1,0 +1,17 @@
+id: archive-and-report
+description: "Archive job (via TEST_HOOKS) moves the aged closed ticket; report goes empty -> populated; archived detail is read-only"
+viewport: desktop
+fixture: seeded
+auth: { principal: admin }
+setup: []                         # deliberately none — the empty state is asserted first
+steps:
+  - goto: /admin/reports/archived
+  - expect: { anchor: admin-reports.main.empty, visible: true, copy: empty.archived }
+  - http:  { method: POST, path: "/__test/jobs/archive-closed/run" }   # requires TEST_HOOKS=1 (manifest testing.hooks)
+  - goto: /admin/reports/archived
+  - expect: { anchor: admin-reports.main.archived-table, visible: true }
+  - expect: { anchor: admin-reports.main.archived-table.row, count_min: 1 }
+  - expect: { anchor: admin-reports.main.count-summary, text_not_empty: true }
+  - expect_db:
+      equals: { query: "SELECT status FROM tickets WHERE id = $fixture.aged_closed_ticket.id", value: "ARCHIVED" }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

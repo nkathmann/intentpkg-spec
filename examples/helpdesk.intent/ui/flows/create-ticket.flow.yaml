@@ -1,0 +1,19 @@
+id: create-ticket
+description: "User creates a ticket; auto-assignment shows an assignee; DB gains one ticket (INV: specialty routing)"
+viewport: desktop
+fixture: seeded
+auth: { principal: user1 }       # header-principal injection (TEST_AUTH=1)
+steps:
+  - goto: /tickets
+  - click: ticket-list.header.new-ticket-btn
+  - expect: { url_path: /tickets/new }
+  - fill:   { anchor: ticket-create.main.subject-input, value: "Monitor flickering" }
+  - fill:   { anchor: ticket-create.main.body-input, value: "External monitor flickers on wake." }
+  - select: { anchor: ticket-create.main.category-select, value: hardware }
+  - click:  ticket-create.main.submit-btn
+  - expect: { anchor: ticket-detail.ticket-header.subject, contains_text: "Monitor flickering" }
+  - expect: { anchor: ticket-detail.ticket-header.status-badge, contains_text: "OPEN" }
+  - expect: { anchor: ticket-detail.ticket-header.assignee, text_not_empty: true }   # hardware analyst auto-assigned
+  - expect_db:
+      delta: { query: "SELECT COUNT(*) FROM tickets", equals: 1 }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }   # exactly list -> form -> detail; no interstitials

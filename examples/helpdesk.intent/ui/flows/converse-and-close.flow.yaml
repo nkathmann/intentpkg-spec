@@ -1,0 +1,18 @@
+id: converse-and-close
+description: "Reply on the thread, then close: compose disappears, closed banner appears, DB status flips (INV: close semantics)"
+viewport: mobile                  # thread is the priority mobile surface
+fixture: seeded
+auth: { principal: user2 }
+steps:
+  - goto: "/tickets/$fixture.conversation_ticket.id"
+  - expect: { anchor: ticket-detail.thread.message, count_min: 2 }   # seeded conversation
+  - fill:  { anchor: ticket-detail.compose.body-input, value: "Thanks — that fixed it." }
+  - click: ticket-detail.compose.send-btn
+  - expect: { anchor: ticket-detail.thread.message, contains_text: "Thanks — that fixed it." }
+  - click: ticket-detail.ticket-header.close-btn
+  - expect: { anchor: ticket-detail.ticket-header.closed-banner, visible: true, copy: banner.closed }
+  - expect: { anchor: ticket-detail.compose.body-input, visible: false }
+  - expect: { anchor: ticket-detail.ticket-header.close-btn, visible: false }
+  - expect_db:
+      equals: { query: "SELECT status FROM tickets WHERE id = $fixture.conversation_ticket.id", value: "CLOSED" }
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

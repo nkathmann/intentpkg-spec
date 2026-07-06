@@ -1,0 +1,80 @@
+# Visual identity contract (intentpkg v0.3 §6). Normative for L3.T gates.
+# Values translated 1:1 from the authored design in interface/surfaces.yaml.
+version: 0.3
+tokens:
+  color:
+    bg:            "#FFFFFF"     # app background — white, always
+    surface:       "#FFFFFF"
+    surface-muted: "#F6F8FA"
+    border:        "#E3E8EE"
+    text:          "#1A2233"
+    text-muted:    "#5B6676"
+    primary:       "#2F6BFF"     # Beacon blue — user portal accent
+    primary-hover: "#1E54D6"
+    primary-soft:  "#EAF1FF"
+    success:       "#1F9D6B"
+    warning:       "#C8791A"
+    danger:        "#D64545"
+    admin-accent:  "#6A3FB5"     # violet — admin portal accent ONLY
+  typography:
+    font-family-base: "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    font-family-mono: "ui-monospace, SFMono-Regular, Menlo, monospace"
+    scale: { meta: 13, body: 15, heading: 18, title: 28 }   # px
+    weights: [400, 500, 600]     # no ultra-bold anywhere
+  spacing:
+    unit: 8
+  radius: { sm: 6, md: 10, lg: 16 }
+  shadow:
+    card: "0 1px 2px rgba(16,24,40,0.04), 0 4px 12px rgba(16,24,40,0.06)"
+  layout:
+    container-max: 1120
+
+bindings:
+  # global
+  - { selector: "body", property: font-family, token: typography.font-family-base }
+  - { selector: "body", property: background-color, token: color.bg }
+  # user portal accent
+  - { anchor: login.main.submit-btn, property: background-color, token: color.primary }
+  - { anchor: ticket-list.header.new-ticket-btn, property: background-color, token: color.primary }
+  - { anchor: ticket-detail.compose.send-btn, property: background-color, token: color.primary }
+  # status badge tinting per surfaces.yaml component spec
+  - anchor: ticket-detail.ticket-header.status-badge
+    property: background-color
+    token_by_state:
+      open: color.primary-soft
+      closed: color.success        # success-tinted; tint tolerance below
+      archived: color.surface-muted
+    tint_tolerance: "background may be a tint (white-mix) of the named token; hue must match within deltaE 6 after tint normalization"
+  - { anchor: ticket-list.main.row.unrouted-flag, property: color, token: color.warning,
+      context: { principal: hwa1 } }         # v0.3.1: binding context — flag only renders for the assigned analyst
+  # error styling
+  - { anchor: login.main.error, property: color, token: color.danger,
+      context: { flow: login-error } }       # v0.3.1: verified at the flow step that asserts the anchor
+  - { anchor: admin-users.main.create-form.error, property: color, token: color.danger,
+      context: { flow: admin-create-user } }
+  # admin portal accent — the portal-distinction contract
+  - { anchor: admin-users.header.accent-bar, property: background-color, token: color.admin-accent }
+
+portal_palette_rules:
+  # The design's core promise: it is unmistakable which portal you are in.
+  - portal: user
+    forbidden_tokens: [color.admin-accent]   # violet must never render in the user portal
+  - portal: admin
+    accent_token: color.admin-accent
+    note: "primary blue remains legal in admin for shared components; violet is additive"
+
+palette_conformance:
+  enabled: true
+  sample: [background-color, color, border-color]
+  tolerance: deltaE 3
+  tint_rule: "white-mixed tints of declared tokens are conformant (hover/soft states)"
+  exempt_anchors:
+    - ticket-detail.thread.message.avatar    # deterministic per-user tint by design
+
+type_conformance:
+  scale_tolerance_px: 0.5
+  weight_whitelist: [400, 500, 600]
+
+spacing_conformance:
+  mode: advisory                             # per spec T6.4 default
+  unit: 8

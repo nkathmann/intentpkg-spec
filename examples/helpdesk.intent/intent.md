@@ -1,5 +1,16 @@
 # Helpdesk — Intent (greenfield)
 
+## Product
+**Beacon Helpdesk** — "Signal sent. Help on the way." A polished internal IT
+ticketing demo. The interface is part of the contract (see
+interface/surfaces.yaml): a modern, white-background design system, and two
+visually distinct portals — a **user portal** (Beacon-blue, content-forward,
+where users and analysts work tickets) and a separate **admin portal**
+(violet-accented back-office for account/specialty management and archived
+reporting). This is a reference implementation people build to see intentpkg
+in action, so visual quality and the portal split are intentional, not
+incidental.
+
 ## Purpose
 An internal IT ticketing system. Users raise tickets; tickets auto-route to
 the IT analyst best suited by specialty and current load; user and analyst

@@ -1,5 +1,8 @@
-format: intentpkg-provenance/v0.2
-summary: { declared: 41, inferred: 0, observed: 0 }
+format: intentpkg-provenance/v0.3
+summary: { declared: 143, inferred: 0, observed: 0 }
+ui_layer: { anchors: 57, copy_strings: 20, token_bindings: 10, flows: 6, screens: 7, added: 2026-07-05, provenance: declared }
 authored_note: "Greenfield package: all assertions declared by the author. No confirmation queue — nothing is inferred."
 confirmation_queue: []
-history: []
+history:
+  - { date: 2026-07-05, change: "v0.2 -> v0.3: added ui/ contract layer (screens, tokens, copy, 6 flows) translated from authored interface/surfaces.yaml; manifest gains ui_substrate + ui_gates; fixtures gain user3/swa2 empty-state principals" }
+  - { date: 2026-07-05, change: "v0.3 -> v0.3.1: job-id fix (archive-closed); compose region state-scoped; focus_order redefined as ordered subsequence; token bindings gain context (principal / flow-verified); validated by L3 runner against reference harness: clean 668/0/48, planted-violations 641/19/48 with all 6 breaches caught" }

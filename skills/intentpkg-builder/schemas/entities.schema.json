@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/entities.schema.json",
+  "title": "data/entities.yaml (flat or multi-store)",
+  "$defs": {
+    "field": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string" },
+        "pk": { "type": "boolean" },
+        "nullable": { "type": "boolean" },
+        "unique": { "type": ["boolean", "string"] },
+        "not_null": { "type": "boolean" },
+        "default": {},
+        "autoincrement": { "type": "boolean" },
+        "indexed": { "type": "boolean" },
+        "on_delete": { "type": "string" },
+        "secret_material": { "type": "boolean" },
+        "write_semantics": { "type": "string" },
+        "note": { "type": "string" },
+        "provenance": { "$ref": "_defs.schema.json#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+    "entity": {
+      "type": "object",
+      "properties": {
+        "provenance": { "$ref": "_defs.schema.json#/$defs/provenance" },
+        "source_of_truth": { "type": "string" },
+        "scope_note": { "type": "string" },
+        "write_semantics": { "type": "string" },
+        "fields": { "type": "object", "additionalProperties": { "$ref": "#/$defs/field" } },
+        "unknowns": { "type": "array", "items": { "type": "string" } },
+        "name": { "type": "string" },
+        "contract": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "entityMap": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/entity" }
+    },
+    "storeBlock": {
+      "type": "object",
+      "required": ["entities"],
+      "properties": { "entities": { "$ref": "#/$defs/entityMap" } },
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["entities"],
+      "properties": {
+        "entities": { "$ref": "#/$defs/entityMap" },
+        "migration_history_note": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "minProperties": 2,
+      "propertyNames": { "not": { "const": "entities" } },
+      "additionalProperties": { "$ref": "#/$defs/storeBlock" }
+    }
+  ]
+}

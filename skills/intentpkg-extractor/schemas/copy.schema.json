@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/copy.schema.json",
+  "title": "ui/copy.yaml",
+  "type": "object",
+  "required": [
+    "version",
+    "strings"
+  ],
+  "properties": {
+    "version": {},
+    "strings": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+)+$"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "tone": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

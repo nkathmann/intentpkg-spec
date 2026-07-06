@@ -1,4 +1,4 @@
-format: intentpkg/v0.2
+format: intentpkg/v0.3
 app:
   id: helpdesk
   title: "Helpdesk — IT ticketing with role-based access and specialty routing"
@@ -28,3 +28,19 @@ extraction:
   method: authored
   extracted_at: 2026-07-05
   extractor: human
+ui_substrate:
+  # Stack is deliberately the builder's choice (build/constraints.yaml) — this
+  # greenfield demo shows the format working across stacks, so component-library
+  # pinning is intentionally RELAXED. Visual stability is carried entirely by
+  # ui/tokens.yaml + the anchor contract + ui/copy.yaml + ui/flows. If build-to-
+  # build visual variance proves too high in the five-run protocol, pin
+  # components here (spec v0.3 default) as the first remediation.
+  framework: builder-choice
+  components: builder-choice
+  styling: builder-choice
+  token_binding: css-variables    # NORMATIVE: tokens surface as CSS custom properties at :root
+  viewports:
+    - { name: desktop, width: 1440, height: 900 }
+    - { name: mobile,  width: 390,  height: 844 }
+ui_gates:
+  visual: "off"                   # no blessed build exists yet; move to advisory after first blessing-eligible build

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intentpkg.dev/schemas/unscoped-surfaces.schema.json",
+  "title": "interface/unscoped-surfaces.yaml",
+  "type": "object",
+  "required": ["unscoped_routes"],
+  "properties": {
+    "unscoped_routes": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "reason_note": { "type": "string" }
+  },
+  "additionalProperties": false
+}

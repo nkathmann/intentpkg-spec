@@ -1,0 +1,14 @@
+id: login-error
+description: "Bad credentials -> inline error, field values preserved, no navigation"
+viewport: desktop
+fixture: seeded
+auth: none
+steps:
+  - goto: /login
+  - fill:  { anchor: login.main.username-input, value: "$fixture.user1.username" }
+  - fill:  { anchor: login.main.password-input, value: "wrong-password" }
+  - click: login.main.submit-btn
+  - expect: { url_path: /login }                       # no redirect
+  - expect: { anchor: login.main.error, visible: true, copy: error.bad-credentials }
+  - expect: { anchor: login.main.username-input, value: "$fixture.user1.username" }  # values not lost (per surfaces error state)
+strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

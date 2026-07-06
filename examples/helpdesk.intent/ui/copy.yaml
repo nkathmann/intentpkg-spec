@@ -1,0 +1,35 @@
+# Copy registry (intentpkg v0.3 §7). Bound strings render verbatim
+# (whitespace-normalized). Empty-state strings come verbatim from the authored
+# design in interface/surfaces.yaml; the rest are declared here (greenfield —
+# all provenance is 'declared') in the brand voice: calm, competent, human.
+version: 0.3
+strings:
+  brand.wordmark:        "Beacon Helpdesk"
+  brand.wordmark-admin:  "Beacon Helpdesk Admin"
+  brand.tagline:         "Signal sent. Help on the way."
+
+  nav.users:             "Users"
+  nav.specialties:       "Specialties"
+  nav.reports:           "Archived Reports"
+
+  cta.sign-in:           "Sign In"
+  cta.new-ticket:        "New Ticket"
+  cta.create-ticket:     "Create Ticket"
+  cta.send:              "Send"
+  cta.close-ticket:      "Close Ticket"
+  cta.create-user:       "Create User"
+  cta.save:              "Save"
+
+  empty.tickets-user:    "No tickets yet. Create one when something needs attention."
+  empty.tickets-analyst: "Nothing assigned right now."
+  empty.archived:        "No archived tickets yet. Closed tickets archive automatically after 24 hours."
+
+  error.bad-credentials:      "That username or password didn't work. Try again."
+  error.duplicate-username:   "That username is already taken."
+
+  banner.closed:   "This ticket is closed."
+  banner.archived: "This ticket is archived and read-only."
+
+tone:
+  voice: "calm, competent, human — never jargon-heavy or playfully cute; this is a tool people use when something is broken"
+  note: "informative; guides unbound copy, not gated"

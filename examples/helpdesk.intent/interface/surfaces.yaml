@@ -1,27 +1,163 @@
+# Interface contract for the Helpdesk demo. Unlike the extraction corpus (where
+# surfaces are thin, low-confidence inventory), this is an AUTHORED UI
+# specification: a demo people implement to see intentpkg work, so the visual
+# result is part of the contract. Design tokens and portal structure are
+# binding; exact pixel styling is the builder's within them.
+#
+# v0.3 NOTE: this file is now the DESIGN-INTENT layer (human-first prose).
+# The machine-checkable rendering of it lives in ui/ (screens.yaml,
+# tokens.yaml, copy.yaml, flows/) and is what L3 gates execute. If the two
+# ever disagree, ui/ is normative for verification and this file must be
+# reconciled in the same change.
+
+design:
+  provenance: { kind: declared }
+  brand:
+    name: "Beacon"
+    wordmark: "Beacon Helpdesk"
+    tagline: "Signal sent. Help on the way."
+    voice: "calm, competent, human — never jargon-heavy or playfully cute; this is a tool people use when something is broken"
+  tokens:
+    # Light, modern, white-background system. Values are the contract; the
+    # builder maps them to CSS variables / a theme file.
+    color-bg:            "#FFFFFF"      # app background — white, always
+    color-surface:       "#FFFFFF"      # cards/panels
+    color-surface-muted: "#F6F8FA"      # subtle fills, table stripes, input backgrounds
+    color-border:        "#E3E8EE"      # hairline borders
+    color-text:          "#1A2233"      # primary text (near-black, not pure black)
+    color-text-muted:    "#5B6676"      # secondary text
+    color-primary:       "#2F6BFF"      # Beacon blue — actions, links, focus
+    color-primary-hover: "#1E54D6"
+    color-primary-soft:  "#EAF1FF"      # tinted backgrounds for primary emphasis
+    color-success:       "#1F9D6B"      # closed/resolved
+    color-warning:       "#C8791A"      # in-progress / unrouted flag
+    color-danger:        "#D64545"      # errors, destructive
+    color-admin-accent:  "#6A3FB5"      # admin portal accent (violet) — distinguishes admin from user portal
+    radius-sm: "6px"
+    radius-md: "10px"
+    radius-lg: "16px"
+    shadow-card: "0 1px 2px rgba(16,24,40,0.04), 0 4px 12px rgba(16,24,40,0.06)"
+    space-unit: "8px"
+    container-max: "1120px"
+  typography:
+    font-sans: "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    font-mono: "ui-monospace, SFMono-Regular, Menlo, monospace"
+    scale: "type scale ~1.2; page titles ~28px/600, section headings ~18px/600, body 15px/400, meta 13px/500"
+    weight: "400 body, 500 emphasis/meta, 600 headings — no ultra-bold"
+  layout:
+    density: "comfortable — generous whitespace, never cramped"
+    grid: "single centered column at container-max for content; full-width app shell"
+    responsive: "usable from 360px (single column) to desktop; ticket-detail thread is the priority reading surface"
+  components:
+    button-primary: "solid color-primary, white text, radius-md, subtle press state; primary action per surface only"
+    button-secondary: "color-surface with color-border, color-text; for secondary actions"
+    card: "color-surface, color-border hairline, radius-lg, shadow-card; the primary content container"
+    status-badge: "pill, radius-sm, tinted background per status — OPEN=color-primary-soft/primary text, IN_PROGRESS=warning-tinted, CLOSED=success-tinted, ARCHIVED=muted/grey"
+    input: "color-surface-muted fill, color-border, radius-md, clear focus ring in color-primary"
+    avatar: "circular initials, deterministic tint from username; distinguishes message authors in the thread"
+    empty-state: "centered icon + one calm sentence + primary action; never a blank page"
+
+portals:
+  user:
+    purpose: "where users and analysts do the work: raise, converse on, and close tickets"
+    audience: [user, it_analyst]
+    route_prefix: "/"
+    theme: "light, color-primary (Beacon blue) accent"
+    shell: { header: "Beacon wordmark left, current-user menu right", nav: "minimal — Tickets is the home; role determines which tickets show", chrome: "clean, content-forward" }
+  admin:
+    purpose: "a visually distinct back-office for account and specialty management and archived-ticket reporting"
+    audience: [administrator]
+    route_prefix: "/admin"
+    theme: "light, color-admin-accent (violet) accent — deliberately different from the user portal so it's unmistakable which context you're in"
+    shell: { header: "Beacon wordmark with 'Admin' lockup, admin accent bar", nav: "left sidebar: Users, Specialties, Archived Reports", chrome: "denser, table-forward, management-oriented" }
+
 surfaces:
+  # ── user portal ──────────────────────────────────────────────────────────
   - id: login
     route: /login
-    purpose: username/password login
+    portal: user
+    purpose: "single sign-in screen for all roles; routes to the correct portal after auth"
     auth: none
-    pinned: [username field, password field, submit, error on bad credentials]
+    layout: "centered card on a clean white field; Beacon wordmark + tagline above the card"
+    pinned: [username field, password field, submit button, inline error on bad credentials]
+    components: [card, input, button-primary]
+    states: ["idle", "submitting (button shows spinner, inputs disabled)", "error (inline message, no field values lost)"]
     provenance: { kind: declared }
   - id: ticket-list
     route: /tickets
-    purpose: role-scoped ticket list (own / assigned / all)
+    portal: user
+    purpose: "role-scoped ticket list — a user sees own, an analyst sees assigned; the home of the user portal"
     auth: session-required
-    pinned: [ticket rows with subject+status+category, create-ticket action (users), status filter]
+    layout: "app shell + centered content column; list of ticket cards or a clean table; status filter as segmented control"
+    pinned:
+      - "ticket rows showing subject, status-badge, category, and last-activity time"
+      - "create-ticket action (visible to users only, primary button, top-right)"
+      - "status filter (OPEN / IN_PROGRESS / CLOSED / ARCHIVED / all)"
+      - "unrouted flag surfaced subtly on affected rows (warning tint)"
+    components: [card, status-badge, button-primary, empty-state]
+    empty_state: "user with no tickets: 'No tickets yet. Create one when something needs attention.' + create button. analyst with none assigned: 'Nothing assigned right now.'"
+    provenance: { kind: declared }
+  - id: ticket-create
+    route: /tickets/new
+    portal: user
+    purpose: "user creates a ticket; category drives auto-assignment"
+    auth: session-required
+    layout: "focused single-column form in a card"
+    pinned: [subject field, body textarea, category select (hardware/software/network/access/other), submit]
+    components: [card, input, button-primary]
     provenance: { kind: declared }
   - id: ticket-detail
     route: /tickets/{id}
-    purpose: conversation view with message thread, attachments, close action
+    portal: user
+    purpose: "the conversation — the priority reading surface of the whole app"
     auth: session-required
-    pinned: [message thread in order, compose box, attach-file control, download attachment, close-ticket button]
+    layout: "ticket header (subject, status-badge, category, participants) atop a chronological message thread; sticky compose box at the bottom"
+    pinned:
+      - "ticket header with subject, status-badge, category, creator and assignee"
+      - "message thread in chronological order, each message with author avatar, name, timestamp, body"
+      - "attachments shown inline on their message (filename, size; images may preview)"
+      - "compose box with text area and attach-file control"
+      - "download-attachment action (participants + admins only)"
+      - "close-ticket button (creator or assignee; hidden once CLOSED/ARCHIVED)"
+    components: [card, status-badge, avatar, input, button-primary, button-secondary]
+    states: ["OPEN/IN_PROGRESS (compose enabled)", "CLOSED (compose hidden, read-only banner)", "ARCHIVED (read-only, archived styling)"]
     provenance: { kind: declared }
+
+  # ── admin portal ─────────────────────────────────────────────────────────
   - id: admin-users
     route: /admin/users
-    purpose: account and specialty management
+    portal: admin
+    purpose: "account management — create/disable users, assign roles"
     auth: session-required (administrator)
-    pinned: [user table, create user form (username, password, role), analyst specialty editor]
+    layout: "admin shell with left sidebar; user table as primary content; create-user in a side panel or modal"
+    pinned:
+      - "user table (username, role, active status, created)"
+      - "create-user form (username, password, role select)"
+      - "disable/enable account action"
+      - "duplicate-username error surfaced inline (409)"
+    components: [card, input, button-primary, status-badge]
     provenance: { kind: declared }
+  - id: admin-specialties
+    route: /admin/specialties
+    portal: admin
+    purpose: "assign analyst specialties that drive auto-routing"
+    auth: session-required (administrator)
+    layout: "admin shell; list of analysts, each with an editable specialty set (multi-select chips per category)"
+    pinned: [analyst list, per-analyst specialty editor (hardware/software/network/access/other), save]
+    components: [card, status-badge, button-primary]
+    provenance: { kind: declared }
+  - id: admin-reports
+    route: /admin/reports/archived
+    portal: admin
+    purpose: "the archived-ticket reporting set"
+    auth: session-required (administrator)
+    layout: "admin shell; filterable table of archived tickets with export affordance"
+    pinned: [archived-ticket table (subject, category, creator, assignee, closed/archived dates), filters, count summary]
+    components: [card, status-badge]
+    empty_state: "'No archived tickets yet. Closed tickets archive automatically after 24 hours.'"
+    provenance: { kind: declared }
+
 navigation:
   provenance: { kind: declared }
+  post_login_routing: "administrators land in /admin; users and analysts land in /tickets"
+  portal_switch: "an administrator who is also handling tickets is out of scope for v1 — admin is a pure back-office role"
