@@ -16,5 +16,5 @@ steps:
   - click: admin-users.main.create-form.submit-btn
   - expect: { anchor: admin-users.main.user-table, contains_text: "flowtest-user" }
   - expect_db:
-      delta: { query: "SELECT COUNT(*) FROM users", equals: 1 }
+      delta: { query: "SELECT COUNT(*) FROM app_users", equals: 1 }
 strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

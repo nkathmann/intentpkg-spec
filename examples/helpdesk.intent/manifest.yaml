@@ -9,7 +9,7 @@ app:
     archive job (proposal 0002 TEST_HOOKS), and a populated security policy
     layer with executable enforcement (Argon2id parameters, AES-256 at rest).
 envelope: internal-web-app/v1
-versions: { spec: 2, data: 1 }
+versions: { spec: 3, data: 1 }
 rebuild: { cadence: 14d, mode: plan-then-apply }
 datastores:
   primary: { kind: postgres-compatible, schema_provenance: authored (this package is source of truth) }

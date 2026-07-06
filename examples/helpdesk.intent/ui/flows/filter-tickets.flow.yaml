@@ -1,14 +1,14 @@
 id: filter-tickets
-description: "The status filter actually filters (v0.3.2 — coverage-gap promotion). user2 has both CLOSED and IN_PROGRESS tickets seeded."
+description: "The status filter actually filters (v0.3.2 — coverage-gap promotion). subjects are fixture-pinned (v0.3.3) — flows assert only fixture-declared data."
 viewport: desktop
 fixture: seeded
 auth: { principal: user2 }
 steps:
   - goto: /tickets
   - click: { anchor: ticket-list.main.status-filter.tab, text: "CLOSED" }
-  - expect: { anchor: ticket-list.main.row, contains_text: "Printer queue stuck" }
-  - expect: { anchor: ticket-list.main.row, not_contains_text: "VPN drops every hour" }
+  - expect: { anchor: ticket-list.main.row, contains_text: "$fixture.closed_ticket.subject" }
+  - expect: { anchor: ticket-list.main.row, not_contains_text: "$fixture.conversation_ticket.subject" }
   - click: { anchor: ticket-list.main.status-filter.tab, text: "IN_PROGRESS" }
-  - expect: { anchor: ticket-list.main.row, contains_text: "VPN drops every hour" }
-  - expect: { anchor: ticket-list.main.row, not_contains_text: "Printer queue stuck" }
+  - expect: { anchor: ticket-list.main.row, contains_text: "$fixture.conversation_ticket.subject" }
+  - expect: { anchor: ticket-list.main.row, not_contains_text: "$fixture.closed_ticket.subject" }
 strictness: { no_unexpected_dialogs: true, max_extra_steps: 0 }

@@ -1,0 +1,23 @@
+fixture:
+  admin: { username: "admin", password: "admin-pass-1" }
+  user1: { username: "user1", password: "user-pass-1" }
+  user2: { username: "user2", password: "user-pass-2" }
+  user3: { username: "user3", password: "user-pass-3" }
+  user1_open_ticket:   { id: "1", assignee_username: "hwa1" }
+  user2_ticket:        { id: "2" }
+  swa1_ticket:         { id: "3" }
+  conversation_ticket: { id: "4" , subject: "VPN drops every hour" }
+  closed_ticket:       { id: "5" , subject: "Printer queue stuck" }
+  aged_closed_ticket:  { id: "6" , subject: "Printer queue stuck" }
+principal_roles:
+  admin: administrator
+  user1: user
+  user2: user
+  user3: user
+  hwa1: it_analyst
+  hwa2: it_analyst
+  swa1: it_analyst
+  swa2: it_analyst
+db:
+  mode: command
+  command: "python3 tools/harness/dbq.py {query}"

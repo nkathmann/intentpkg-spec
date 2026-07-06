@@ -116,6 +116,10 @@ class Package:
                       for p in sorted((self.root / 'ui/flows').glob('*.flow.yaml'))}
         jp = self.root / 'behavior/jobs.yaml'
         self.jobs = {j['id'] for j in yaml.safe_load(jp.read_text())['jobs']} if jp.exists() else set()
+        self.tables = set()
+        for mig in sorted((self.root / 'data/migrations').glob('*.yaml')) if (self.root / 'data/migrations').is_dir() else []:
+            up = (yaml.safe_load(mig.read_text()) or {}).get('up', '') or ''
+            self.tables |= {m.lower() for m in re.findall(r'create\s+table\s+(?:if\s+not\s+exists\s+)?([A-Za-z_][A-Za-z0-9_]*)', up, re.I)}
         self.viewports = {v['name']: v for v in self.manifest['ui_substrate']['viewports']}
 
 def resolve_fixture(val, fx):
@@ -206,6 +210,11 @@ def validate(pkg, res, schema_dir=None):
                 if m and m.group(1) not in pkg.jobs: errs.append(f"{name}: unknown job {m.group(1)}")
             if verb == 'expect' and isinstance(val, dict) and val.get('copy') and val['copy'] not in pkg.copy:
                 errs.append(f"{name}: unknown copy key {val['copy']}")
+            if verb == 'expect_db' and pkg.tables:
+                q = (val.get('delta') or val.get('equals') or {}).get('query', '')
+                for t in re.findall(r'\b(?:from|join)\s+([A-Za-z_][A-Za-z0-9_]*)', q, re.I):
+                    if t.lower() not in pkg.tables:
+                        errs.append(f"{name}: expect_db references table '{t}' not created by any migration")
     for e in errs: res.add('S', 'validate', 'fail', e)
     if not errs: res.add('S', 'validate:ui-coherence', 'pass', f"{len(anchors)} anchors, {len(pkg.flows)} flows")
     return anchors, not errs

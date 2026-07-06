@@ -37,7 +37,8 @@ agent that reads the format is a friend.
 L0 Valid        files parse and satisfy schemas/ (unknown keys rejected);
                 provenance present
 L1 Coherent     cross-references resolve: goldens -> OpenAPI, flows -> anchors,
-                components -> copy keys, hooks -> jobs, migrations well-formed
+                components -> copy keys, hooks -> jobs, db assertions -> tables
+                the migrations actually create, migrations well-formed
 L2 Verified     behavioral gates pass against a RUNNING build: golden cases,
                 invariant probes, database checks
 L3 UI-Verified  interface gates pass against a running build in a real
@@ -63,8 +64,10 @@ examples/            canonical example packages: sumhub.intent (complete
                      minimal package, ~15 files) and helpdesk.intent (the
                      flagship — full UI layer, 7 screens, 8 flows, 59 anchors)
 tools/               reference runners (behavioral L0–L2, UI L3) and
-                     validate_corpus.py; harness/ contains the mock app with
-                     planted violations that the UI runner is tested against
+                     validate_corpus.py; tools/harness/ is the runner's own
+                     conformance suite — a reference-conformant mock build
+                     plus a planted-violations mode (see its README for the
+                     two checks that define a working runner)
 skills/              reference extractor and builder as Claude Code skills;
                      they clone this repo for authority and define "done" as
                      gate output
@@ -83,6 +86,9 @@ python3 tools/intentpkg_ui_runner.py validate examples/helpdesk.intent
 # verify a running build (requires playwright + chromium for L3)
 python3 tools/intentpkg_runner.py    verify examples/helpdesk.intent --base-url http://localhost:3000 --fixtures fixtures.yaml
 python3 tools/intentpkg_ui_runner.py verify examples/helpdesk.intent --base-url http://localhost:3000 --fixtures fixtures.yaml
+
+# or exercise the runners against the built-in harness (no app of your own needed):
+#   see tools/harness/README.md
 ```
 
 Every report records the package revision and spec commit it ran against; a
@@ -109,6 +115,12 @@ on the first attempt.
 conformant reference build and catches all planted contract breaches (missing
 anchors, off-palette colors, reworded copy, injected dialogs, broken focus
 order) with zero false positives — see `tools/harness/`.
+
+**Incremental regeneration.** A package revision (two new anchors, two new
+flows) was applied to a previously verified build by the reference builder
+skill: gates passed on the first live attempt with zero repair iterations,
+and rerun reports were byte-identical. Spec diff in, build diff out, gate
+confirms — the steady-state lifecycle motion.
 
 **The instructive failure.** One generated build passed every declared gate at
 fidelity 1.0 and was still unusable: its ticket rows and filter tabs rendered

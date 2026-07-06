@@ -4,6 +4,7 @@ ui_layer: { anchors: 57, copy_strings: 20, token_bindings: 10, flows: 6, screens
 authored_note: "Greenfield package: all assertions declared by the author. No confirmation queue — nothing is inferred."
 confirmation_queue: []
 history:
+  - { date: 2026-07-06, change: "v0.3.3: build-report-driven fixes — flow db query users->app_users (matches migration; builder had disclosed a compat-view accommodation); filter-tickets subjects moved into fixtures and asserted via $fixture refs (flows may only assert fixture-declared data)" }
   - { date: 2026-07-06, change: "v0.3.2: interactivity coverage-gap promotion — a build passed L3 at fidelity 1.0 with dead row links and a dead status filter; added row.subject-link + status-filter.tab anchors and flows open-ticket-from-list / filter-tickets; versions.spec bumped per revision rule" }
   - { date: 2026-07-05, change: "v0.2 -> v0.3: added ui/ contract layer (screens, tokens, copy, 6 flows) translated from authored interface/surfaces.yaml; manifest gains ui_substrate + ui_gates; fixtures gain user3/swa2 empty-state principals" }
   - { date: 2026-07-05, change: "v0.3 -> v0.3.1: job-id fix (archive-closed); compose region state-scoped; focus_order redefined as ordered subsequence; token bindings gain context (principal / flow-verified); validated by L3 runner against reference harness: clean 668/0/48, planted-violations 641/19/48 with all 6 breaches caught" }

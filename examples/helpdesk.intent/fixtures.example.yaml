@@ -13,9 +13,9 @@ fixture:
   user1_open_ticket:   { id: "1", assignee_username: "hwa1" }  # OPEN, user1 creator, hwa1 assignee
   user2_ticket:        { id: "2" }                              # user2's ticket (isolation probe)
   swa1_ticket:         { id: "3" }                              # assigned to swa1 (analyst isolation probe)
-  conversation_ticket: { id: "4" }                              # user2 + assignee, >=2 messages seeded
-  closed_ticket:       { id: "5" }                              # CLOSED (recently) — messaging blocked
-  aged_closed_ticket:  { id: "6" }                              # CLOSED >24h ago — archive-eligible
+  conversation_ticket: { id: "4" , subject: "VPN drops every hour" }                              # user2 + assignee, >=2 messages seeded
+  closed_ticket:       { id: "5" , subject: "Printer queue stuck" }                              # CLOSED (recently) — messaging blocked
+  aged_closed_ticket:  { id: "6" , subject: "Printer queue stuck" }                              # CLOSED >24h ago — archive-eligible
 db:
   mode: command
   command: "docker exec roundtrip-pg psql -U postgres -d helpdesk -tAc {query}"
