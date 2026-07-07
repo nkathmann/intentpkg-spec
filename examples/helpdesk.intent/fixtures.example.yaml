@@ -11,7 +11,9 @@ fixture:
   # swa2 = software analyst with NO assigned tickets — induces ticket-list empty state (analyst)
   # tickets seeded in known states:
   user1_open_ticket:   { id: "1", assignee_username: "hwa1" }  # OPEN, user1 creator, hwa1 assignee
-  user2_ticket:        { id: "2" }                              # user2's ticket (isolation probe)
+  user2_ticket:        { id: "2", unrouted: true }   # v0.3.5: MUST seed unrouted and assigned to a
+                                                     # hardware analyst — the unrouted-flag component
+                                                     # and its token binding (context: hwa1) assert it                              # user2's ticket (isolation probe)
   swa1_ticket:         { id: "3" }                              # assigned to swa1 (analyst isolation probe)
   conversation_ticket: { id: "4" , subject: "VPN drops every hour" }                              # user2 + assignee, >=2 messages seeded
   closed_ticket:       { id: "5" , subject: "Printer queue stuck" }                              # CLOSED (recently) — messaging blocked

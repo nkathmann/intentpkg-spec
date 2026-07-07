@@ -168,7 +168,12 @@ def _schema_validate(pkg, res, schema_dir=None):
         import json as _json
         from jsonschema import Draft202012Validator
     except ImportError:
-        res.add('S', 'schema:*', 'skip', 'jsonschema not installed'); return
+        import sys as _sys
+        print('WARNING: L0 schema validation SKIPPED — jsonschema not installed '
+              '(pip install jsonschema). This report does NOT certify schema conformance.',
+              file=_sys.stderr)
+        res.schema_validated = False
+        res.add('S', 'schema:*', 'skip', 'SCHEMA GATE DID NOT RUN — jsonschema not installed'); return
     schemas = {p.stem.replace('.schema', ''): _json.loads(p.read_text()) for p in sdir.glob('*.schema.json')}
     targets = [('manifest.yaml', 'manifest'), ('ui/screens.yaml', 'screens'),
                ('ui/tokens.yaml', 'tokens'), ('ui/copy.yaml', 'copy')] + \
@@ -388,7 +393,12 @@ class Verifier:
         a = c['anchor']
         cid = gid + f":anchor:{a}"
         if c.get('viewports') and vpn not in c['viewports']: return
-        if c.get('roles') and my_role:
+        if c.get('roles'):
+            if my_role is None:
+                self.res.add('S', cid + ':role-scope', 'fail',
+                              f"principal '{pr}' has no role mapping — add principal_roles to fixtures; "
+                              "role-scoped assertions cannot run without it")
+                return
             if my_role not in c['roles']:
                 loc = page.locator(f"[data-testid='{a}']")
                 absent = loc.count() == 0 or not loc.first.is_visible()

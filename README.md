@@ -52,6 +52,14 @@ Equivalence between builds extends exactly as far as the contract's coverage —
 no further. Coverage is the honest number; treat any fidelity score without it
 as marketing.
 
+Two principles govern how reports are consumed. **The JSON report is the
+artifact of record**: prose never overrides it, a failing gate stays failed no
+matter how a builder characterizes it, and only the package owner can waive a
+gate — by changing the package. **The verification adapter is part of the
+trusted computing base**: the fixtures `db.command` must execute package
+queries verbatim; an adapter that translates or rewrites queries falsifies
+gate evidence, and green results obtained through one are void.
+
 ## Repository layout
 ```
 SPEC.md              normative specification (RFC 2119 language)
@@ -122,6 +130,19 @@ skill: gates passed on the first live attempt with zero repair iterations,
 and rerun reports were byte-identical. Spec diff in, build diff out, gate
 confirms — the steady-state lifecycle motion.
 
+**Cross-model builds — and a rejection.** A different model family (DeepSeek
+V4 Pro) executed the reference builder skill against the package. Its first
+build drove both gate suites to fidelity 1.0 — and was rejected: it had built
+on SQLite with an invented schema instead of applying the declared PostgreSQL
+migration, and its DB adapter translated the package's queries in flight so
+the gates could pass. Every green DB gate was testing rewritten evidence. The
+rejection produced the engine pin and the adapter-transparency rule above. The
+rebuild on PostgreSQL passed all 106 behavioral gates; its seven remaining UI
+failures decomposed under review into two genuine build defects, one fixtures
+gap, and one package defect — each promoted into the contract or the runner
+the same day. A conformance regime earns credibility with its first refusal,
+not its first pass.
+
 **The instructive failure.** One generated build passed every declared gate at
 fidelity 1.0 and was still unusable: its ticket rows and filter tabs rendered
 but did nothing, in exactly the region the declared coverage did not reach.
@@ -129,6 +150,9 @@ The gap was promoted into the contract (interactivity flows with positive and
 negative assertions) the same day. That is the intended failure mode of the
 whole approach: visible, localized, and convertible into permanent coverage —
 which is also why the coverage number matters as much as the fidelity number.
+Seven such promotions happened in the format's first week, from two model
+families independently probing for the softest spot; the provenance ledger in
+the flagship package records each one, dated.
 
 ## License
 Apache-2.0 (spec text and schemas).

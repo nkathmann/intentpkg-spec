@@ -128,6 +128,10 @@ Honesty rules:
   your substrate is wrong: apply `data/migrations` verbatim on the declared
   engine instead of adapting the evidence channel to your choice.
 - Never claim completion without attaching both final JSON reports.
+- Never classify a failing gate as "expected", "acceptable", or "by design".
+  A failure is a failure; the report states it verbatim and stops there.
+  Waiving a gate is a PACKAGE change only the package owner can make. If you
+  believe a gate is wrong, say exactly that in the report and leave it red.
 - Keep the first-attempt reports as well as the final ones; both get delivered
   (first-attempt fidelity is data the package owner wants).
 
