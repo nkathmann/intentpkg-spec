@@ -106,9 +106,17 @@ def color_conforms(sample, tokens, tol):
     return False, None
 
 # ----------------------------------------------------------------- package --
+RUNNER_VERSION = "0.3.5"
+
 class Package:
     def __init__(self, root):
         self.root = Path(root)
+        import hashlib
+        h = hashlib.sha256()
+        for p in sorted(self.root.rglob('*')):
+            if p.is_file() and '__pycache__' not in p.parts:
+                h.update(str(p.relative_to(self.root)).encode() + b'\0' + p.read_bytes() + b'\0')
+        self.content_hash = 'sha256:' + h.hexdigest()
         self.screens = yaml.safe_load((self.root / 'ui/screens.yaml').read_text())
         self.tokens = yaml.safe_load((self.root / 'ui/tokens.yaml').read_text())
         self.copy = yaml.safe_load((self.root / 'ui/copy.yaml').read_text())['strings']
@@ -731,6 +739,13 @@ def main():
     finally:
         v.close()
     s = res.summary()
+    s['package'] = {
+        'content_hash': pkg.content_hash,
+        'format': pkg.manifest.get('format'),
+        'spec_revision': (pkg.manifest.get('versions') or {}).get('spec'),
+        'runner_version': RUNNER_VERSION,
+    }
+    print(f"package {pkg.content_hash[:23]}…  format {s['package']['format']}  rev {s['package']['spec_revision']}", file=__import__('sys').stderr)
     report = {"summary": s, "checks": res.checks}
     if args.json: Path(args.json).write_text(json.dumps(report, indent=2))
     print(json.dumps(s, indent=2))

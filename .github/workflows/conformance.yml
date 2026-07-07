@@ -1,0 +1,78 @@
+name: conformance
+# The runner's own conformance suite, enforced. Two checks define a working
+# UI runner (tools/harness/README.md): the clean harness build must pass
+# everything; the planted-violations build must fail with all six breach
+# categories caught and no stray failures. Plus: every example package must
+# satisfy the schemas, and the runner's static validate must agree.
+
+on:
+  push:
+    branches: [main]
+    paths: ["tools/**", "schemas/**", "examples/**", ".github/workflows/conformance.yml"]
+  pull_request:
+    paths: ["tools/**", "schemas/**", "examples/**", ".github/workflows/conformance.yml"]
+
+concurrency:
+  group: conformance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml jsonschema playwright
+          playwright install --with-deps chromium
+          npm install axe-core@4
+
+      - name: Schema corpus (every example satisfies the schemas)
+        run: |
+          python3 tools/validate_corpus.py examples/helpdesk.intent examples/sumhub.intent
+
+      - name: Static validate (L0 schema gate + L1 coherence, schema_validated must be true)
+        run: |
+          python3 tools/intentpkg_ui_runner.py validate examples/helpdesk.intent --schemas schemas \
+            | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['level']=='pass' and d['schema_validated'] is True, d; print('validate OK, schema gate ran')"
+
+      - name: Harness check 1 — clean build must pass everything
+        run: |
+          TEST_AUTH=1 TEST_HOOKS=1 PORT=8787 python3 tools/harness/app.py & echo $! > /tmp/h.pid
+          sleep 2
+          python3 tools/intentpkg_ui_runner.py verify examples/helpdesk.intent \
+            --base-url http://127.0.0.1:8787 \
+            --fixtures tools/harness/fixtures.harness.yaml \
+            --axe-js node_modules/axe-core/axe.min.js \
+            --schemas schemas \
+            --json clean-report.json
+          kill $(cat /tmp/h.pid)
+          python3 -c "import json; s=json.load(open('clean-report.json'))['summary']; assert s['gates']['fail']==0 and s['schema_validated'] is True, s; print('clean:', s['gates'], s['package']['content_hash'][:23])"
+
+      - name: Harness check 2 — violations build must fail correctly
+        run: |
+          VIOLATIONS=1 TEST_AUTH=1 TEST_HOOKS=1 PORT=8788 python3 tools/harness/app.py & echo $! > /tmp/h.pid
+          sleep 2
+          python3 tools/intentpkg_ui_runner.py verify examples/helpdesk.intent \
+            --base-url http://127.0.0.1:8788 \
+            --fixtures tools/harness/fixtures.harness.yaml \
+            --axe-js node_modules/axe-core/axe.min.js \
+            --schemas schemas \
+            --json violations-report.json || true
+          kill $(cat /tmp/h.pid)
+          python3 tools/harness/check_violations.py violations-report.json
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conformance-reports
+          path: |
+            clean-report.json
+            violations-report.json
