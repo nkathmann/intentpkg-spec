@@ -3,3 +3,13 @@ frameworks: {}
 deny_dependencies:
   - { name: "crypto-js", reason: "banned by policy/security.yaml" }
 password_hashing_note: "MUST use a vetted Argon2id implementation (e.g. argon2 native binding); parameters per policy"
+database:
+  engine: postgresql            # v0.3.4: the migration IS PostgreSQL (pgcrypto, enums,
+  min_version: "15"             # uuid PKs, timestamptz); the engine was always implied,
+                                # now it is declared. Builds MUST apply data/migrations
+                                # verbatim on this engine.
+verification_adapter:
+  transparency: required        # v0.3.4: the fixtures db.command MUST execute package
+                                # queries VERBATIM. Rewriting, translating, or shimming
+                                # queries in the adapter falsifies gate evidence and is
+                                # a conformance violation regardless of gate results.

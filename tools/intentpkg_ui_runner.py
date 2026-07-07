@@ -33,7 +33,7 @@ except ImportError:
 
 # ------------------------------------------------------------------ report --
 class Result:
-    def __init__(self): self.checks = []
+    def __init__(self): self.checks = []; self.schema_validated = None
     def add(self, sub, gate, status, detail=""):
         self.checks.append({"level": "L3", "sub": sub, "gate": gate, "status": status, "detail": detail})
     def summary(self):
@@ -47,6 +47,7 @@ class Result:
             out["sub"][{"S": "structural", "T": "token", "F": "flow", "A": "axe"}[s]] = {
                 **g, "fidelity": round(g["pass"] / ex, 3) if ex else None,
                 "coverage": round(ex / (ex + g["skip"]), 3) if (ex + g["skip"]) else None}
+        out["schema_validated"] = self.schema_validated
         for c in self.checks: out["gates"][c["status"]] += 1
         ex = out["gates"]["pass"] + out["gates"]["fail"]
         out["fidelity"] = round(out["gates"]["pass"] / ex, 3) if ex else None
@@ -151,10 +152,18 @@ def _schema_validate(pkg, res, schema_dir=None):
     import os
     cands = [schema_dir, os.environ.get('INTENTPKG_SCHEMAS'),
              pkg.root.parent / 'spec' / 'schemas', pkg.root.parent / 'schemas',
-             Path(__file__).parent / 'schemas']
+             pkg.root.parent.parent / 'schemas',        # examples/<pkg> inside the spec repo
+             Path(__file__).parent / 'schemas',
+             Path(__file__).parent.parent / 'schemas']  # runner in tools/, schemas/ at repo root
     sdir = next((Path(c) for c in cands if c and Path(c).is_dir()), None)
     if not sdir:
-        res.add('S', 'schema:*', 'skip', 'no schema directory found (--schemas / $INTENTPKG_SCHEMAS / spec/schemas)'); return
+        import sys as _sys
+        print('WARNING: L0 schema validation SKIPPED — no schema directory found. '
+              'This report does NOT certify schema conformance. '
+              'Pass --schemas or set $INTENTPKG_SCHEMAS.', file=_sys.stderr)
+        res.schema_validated = False
+        res.add('S', 'schema:*', 'skip', 'SCHEMA GATE DID NOT RUN — no schema directory found'); return
+    res.schema_validated = True
     try:
         import json as _json
         from jsonschema import Draft202012Validator
@@ -251,8 +260,9 @@ class Verifier:
         except Exception: return 599
 
     def db(self, query):
+        import shlex
         cmd = self.fx['db']['command']
-        argv = [a if a != '{query}' else query for a in cmd.split(' ')]
+        argv = [a if a != '{query}' else query for a in shlex.split(cmd)]
         out = subprocess.run(argv, capture_output=True, text=True, timeout=20)
         return out.stdout.strip()
 

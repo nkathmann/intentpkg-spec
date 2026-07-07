@@ -19,3 +19,9 @@ Two checks define a working UI runner (run from repo root):
       --base-url http://127.0.0.1:8788 --fixtures tools/harness/fixtures.harness.yaml
 
 `helpdesk.db` is created at boot; never commit it.
+
+Scope disclosure: this harness runs on SQLite and does NOT apply the
+package's PostgreSQL migration — it is a UI-gate (L3) conformance harness,
+deliberately NOT a data-layer-conformant build. It must never be cited as an
+L2-conformant reference. (The engine pin in build/constraints.yaml, v0.3.4,
+exists precisely because a build made this same substitution silently.)

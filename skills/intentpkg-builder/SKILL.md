@@ -121,6 +121,12 @@ reference them).
 Honesty rules:
 - Never weaken, skip, or reinterpret a gate to pass it. If a gate looks wrong,
   say so in the report; the package owner decides.
+- The fixtures `db.command` adapter MUST execute package queries VERBATIM.
+  Rewriting, dialect-translating, or shimming queries inside the adapter
+  falsifies gate evidence — green results obtained through a translating
+  adapter are void. If the package's queries cannot run on your substrate,
+  your substrate is wrong: apply `data/migrations` verbatim on the declared
+  engine instead of adapting the evidence channel to your choice.
 - Never claim completion without attaching both final JSON reports.
 - Keep the first-attempt reports as well as the final ones; both get delivered
   (first-attempt fidelity is data the package owner wants).
