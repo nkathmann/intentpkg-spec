@@ -4,12 +4,49 @@
   "title": "build/constraints.yaml",
   "type": "object",
   "properties": {
-    "languages": { "type": "object" },
-    "frameworks": { "type": "object" },
-    "deny_dependencies": { "type": "array" }
+    "languages": {
+      "type": "object"
+    },
+    "frameworks": {
+      "type": "object"
+    },
+    "deny_dependencies": {
+      "type": "array"
+    },
+    "database": {
+      "type": "object",
+      "required": [
+        "engine"
+      ],
+      "properties": {
+        "engine": {
+          "type": "string"
+        },
+        "min_version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "verification_adapter": {
+      "type": "object",
+      "required": [
+        "transparency"
+      ],
+      "properties": {
+        "transparency": {
+          "enum": [
+            "required"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
   },
   "patternProperties": {
-    "_note$": { "type": "string" }
+    "_note$": {
+      "type": "string"
+    }
   },
   "additionalProperties": false
 }

@@ -6,7 +6,16 @@ from pathlib import Path
 import yaml
 from jsonschema import Draft202012Validator, RefResolver
 
-SDIR = Path(__file__).parent / "schemas"
+import os, sys
+_cands = [os.environ.get("INTENTPKG_SCHEMAS"),
+          Path(__file__).parent / "schemas",          # validator at repo root
+          Path(__file__).parent.parent / "schemas",   # validator in tools/
+          Path.cwd() / "schemas"]
+SDIR = next((Path(c) for c in _cands if c and Path(c).is_dir()), None)
+if SDIR is None or not list(SDIR.glob("*.schema.json")):
+    sys.exit("FATAL: no schema directory found (tried $INTENTPKG_SCHEMAS, "
+             "beside this script, one level up, and ./schemas). "
+             "Schemas are normative for L0 — refusing to validate without them.")
 schemas = {p.stem: json.loads(p.read_text()) for p in SDIR.glob("*.schema.json")}
 store = {s["$id"]: s for s in schemas.values()}
 # also register by bare filename for relative $refs

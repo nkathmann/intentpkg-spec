@@ -1,1 +1,1 @@
-snapshot of https://github.com/nkathmann/intentpkg-spec @ 490b205e7729d907d0064dd315f9c6c1cffd0c5a — offline fallback only; the live repo is authoritative
+snapshot refreshed 2026-07-07
